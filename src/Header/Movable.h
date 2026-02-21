@@ -8,5 +8,5 @@ struct Movable
 	Vector2 position;
 	Vector2 velocity;
 
-	virtual void Move(Movable movable,float deltaTime);
+	virtual void Move(float deltaTime);
 };

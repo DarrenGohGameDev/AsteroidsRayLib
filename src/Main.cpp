@@ -3,9 +3,14 @@
 #include "stdlib.h"
 #include "raymath.h"
 
+#include "Asteroid.h"
+#include "AsteroidsManager.h"
+
 const int screenWidth = 600;
 const int screenHeight = 600;
 const Vector2 screenSize = { screenWidth,screenHeight };
+
+AsteroidsManager asteroidManager;
 
 void UpdateDrawFrame(void);
 
@@ -28,9 +33,18 @@ int main(void)
 
 void UpdateDrawFrame(void)
 {
+	float deltaTime = GetFrameTime();
 	BeginDrawing();
+	asteroidManager.UpdateAllAsteroids(deltaTime);
+
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+	{
+		Vector2 newDummyVelocity = { 200,0 };
+		asteroidManager.SpawnAsteeroid(GetMousePosition(), newDummyVelocity);
+	}
 
 	ClearBackground(RED);
+	asteroidManager.DrawAllAsteroids();
 
 	EndDrawing();
 }

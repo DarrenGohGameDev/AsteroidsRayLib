@@ -1,4 +1,5 @@
-H:\projects\RayLib\AsteroidsRayLib\Asteroids.cpp;H:\projects\RayLib\AsteroidsRayLib\AsteroidsRayLib\x64\Debug\Asteroids.obj
-H:\projects\RayLib\AsteroidsRayLib\Main.cpp;H:\projects\RayLib\AsteroidsRayLib\AsteroidsRayLib\x64\Debug\Main.obj
-H:\projects\RayLib\AsteroidsRayLib\Movable.cpp;H:\projects\RayLib\AsteroidsRayLib\AsteroidsRayLib\x64\Debug\Movable.obj
+H:\projects\RayLib\AsteroidsRayLib\src\Main.cpp;H:\projects\RayLib\AsteroidsRayLib\AsteroidsRayLib\x64\Debug\Main.obj
+H:\projects\RayLib\AsteroidsRayLib\src\Source\Asteroid.cpp;H:\projects\RayLib\AsteroidsRayLib\AsteroidsRayLib\x64\Debug\Asteroid.obj
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp;H:\projects\RayLib\AsteroidsRayLib\AsteroidsRayLib\x64\Debug\AsteroidsManager.obj
+H:\projects\RayLib\AsteroidsRayLib\src\Source\Movable.cpp;H:\projects\RayLib\AsteroidsRayLib\AsteroidsRayLib\x64\Debug\Movable.obj
 H:\projects\RayLib\AsteroidsRayLib\src\Source\Player.cpp;H:\projects\RayLib\AsteroidsRayLib\AsteroidsRayLib\x64\Debug\Player.obj

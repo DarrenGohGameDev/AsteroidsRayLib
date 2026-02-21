@@ -3,27 +3,36 @@
   "WorkspaceRootPath": "H:\\projects\\RayLib\\AsteroidsRayLib\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\Movable.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:Movable.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Asteroid.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Source\\Asteroid.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\Movable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:Movable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\Asteroid.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Header\\Asteroid.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\AsteroidsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Source\\AsteroidsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Source\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\AsteroidsManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Header\\AsteroidsManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\Movable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Header\\Movable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Movable.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Source\\Movable.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D2846048-2A6C-4F12-B042-A0BE9A344873}|AsteroidsRayLib.vcxproj|solutionrelative:src\\Header\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\time.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,70 +42,102 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Movable.cpp",
-              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\Movable.cpp",
-              "RelativeDocumentMoniker": "Movable.cpp",
-              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\Movable.cpp",
-              "RelativeToolTip": "Movable.cpp",
+              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Movable.cpp",
+              "RelativeDocumentMoniker": "src\\Source\\Movable.cpp",
+              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Movable.cpp",
+              "RelativeToolTip": "src\\Source\\Movable.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-21T07:56:17.28Z",
+              "WhenOpened": "2026-02-21T11:41:15.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Asteroid.cpp",
+              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Asteroid.cpp",
+              "RelativeDocumentMoniker": "src\\Source\\Asteroid.cpp",
+              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Asteroid.cpp",
+              "RelativeToolTip": "src\\Source\\Asteroid.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-21T08:28:46.9Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Movable.h",
-              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\Movable.h",
-              "RelativeDocumentMoniker": "Movable.h",
-              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\Movable.h",
-              "RelativeToolTip": "Movable.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Title": "Asteroid.h",
+              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\Asteroid.h",
+              "RelativeDocumentMoniker": "src\\Header\\Asteroid.h",
+              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\Asteroid.h",
+              "RelativeToolTip": "src\\Header\\Asteroid.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-21T07:53:03.403Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "time.h",
-              "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\time.h",
-              "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\time.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-21T07:22:36.777Z"
+              "WhenOpened": "2026-02-21T08:28:42.04Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Main.cpp",
-              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\Main.cpp",
-              "RelativeDocumentMoniker": "Main.cpp",
-              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\Main.cpp",
-              "RelativeToolTip": "Main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAQAAAAAAAAAA==",
+              "Title": "AsteroidsManager.cpp",
+              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\AsteroidsManager.cpp",
+              "RelativeDocumentMoniker": "src\\Source\\AsteroidsManager.cpp",
+              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\AsteroidsManager.cpp",
+              "RelativeToolTip": "src\\Source\\AsteroidsManager.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-21T06:47:03.395Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Player.cpp",
-              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Player.cpp",
-              "RelativeDocumentMoniker": "src\\Source\\Player.cpp",
-              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Source\\Player.cpp",
-              "RelativeToolTip": "src\\Source\\Player.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-11T14:32:03.318Z"
+              "WhenOpened": "2026-02-21T08:58:03.896Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "AsteroidsManager.h",
+              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\AsteroidsManager.h",
+              "RelativeDocumentMoniker": "src\\Header\\AsteroidsManager.h",
+              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\AsteroidsManager.h",
+              "RelativeToolTip": "src\\Header\\AsteroidsManager.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-21T08:54:03.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Main.cpp",
+              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Main.cpp",
+              "RelativeDocumentMoniker": "src\\Main.cpp",
+              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Main.cpp",
+              "RelativeToolTip": "src\\Main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-21T08:28:45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Movable.h",
+              "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\Movable.h",
+              "RelativeDocumentMoniker": "src\\Header\\Movable.h",
+              "ToolTip": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\Movable.h",
+              "RelativeToolTip": "src\\Header\\Movable.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-21T08:28:43.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Player.h",
               "DocumentMoniker": "H:\\projects\\RayLib\\AsteroidsRayLib\\src\\Header\\Player.h",
               "RelativeDocumentMoniker": "src\\Header\\Player.h",
@@ -104,7 +145,8 @@
               "RelativeToolTip": "src\\Header\\Player.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-11T14:31:49.642Z"
+              "WhenOpened": "2026-02-21T08:28:01.579Z",
+              "EditorCaption": ""
             }
           ]
         }

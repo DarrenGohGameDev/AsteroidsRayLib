@@ -1,5 +1,19 @@
-﻿  Asteroids.cpp
-  Movable.cpp
+﻿  Main.cpp
+H:\projects\RayLib\AsteroidsRayLib\src\Header\Asteroid.h(4,14): warning C4091: 'typedef ': ignored on left of 'AsteroidSize' when no variable is declared
+  (compiling source file 'src/Main.cpp')
+  
+H:\projects\RayLib\AsteroidsRayLib\src\Main.cpp(19,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Asteroid.cpp
+H:\projects\RayLib\AsteroidsRayLib\src\Header\Asteroid.h(4,14): warning C4091: 'typedef ': ignored on left of 'AsteroidSize' when no variable is declared
+  (compiling source file 'src/Source/Asteroid.cpp')
+  
+H:\projects\RayLib\AsteroidsRayLib\src\Source\Asteroid.cpp(30,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  AsteroidsManager.cpp
+H:\projects\RayLib\AsteroidsRayLib\src\Header\Asteroid.h(4,14): warning C4091: 'typedef ': ignored on left of 'AsteroidSize' when no variable is declared
+  (compiling source file 'src/Source/AsteroidsManager.cpp')
+  
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(5,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(5,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   AsteroidsRayLib.vcxproj -> H:\projects\RayLib\AsteroidsRayLib\x64\Debug\AsteroidsRayLib.exe

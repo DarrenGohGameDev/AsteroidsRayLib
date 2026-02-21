@@ -1,7 +1,7 @@
 #include "Movable.h"
 #include "raymath.h"
 
-void Movable::Move(Movable movable, float deltaTime)
+void Movable::Move(float deltaTime)
 {
-	movable.position = Vector2Add(movable.position, Vector2Scale(movable.velocity, deltaTime));
+	position = Vector2Add(position, Vector2Scale(velocity, deltaTime));
 }
