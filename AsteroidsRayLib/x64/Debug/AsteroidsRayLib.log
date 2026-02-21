@@ -1,3 +1,7 @@
-﻿  Movable.cpp
+﻿  Main.cpp
+  Movable.cpp
+H:\projects\RayLib\AsteroidsRayLib\Main.cpp(14,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  LINK : H:\projects\RayLib\AsteroidsRayLib\x64\Debug\AsteroidsRayLib.exe not found or not built by the last incremental link; performing full link
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   AsteroidsRayLib.vcxproj -> H:\projects\RayLib\AsteroidsRayLib\x64\Debug\AsteroidsRayLib.exe
