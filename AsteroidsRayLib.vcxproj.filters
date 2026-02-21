@@ -18,7 +18,7 @@
     <ClInclude Include="src\Header\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Asteroids.h">
+    <ClInclude Include="Movable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Asteroids.cpp">
+    <ClCompile Include="Movable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
