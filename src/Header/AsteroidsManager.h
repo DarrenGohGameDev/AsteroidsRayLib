@@ -6,16 +6,13 @@
 
 class AsteroidsManager
 {
-
-	Asteroid CreateAstroid(Vector2 position,Vector2 velocity,AsteroidSize size);
-
 	public : 
 
-		void UpdateAllAsteroids(float deltaTIme);
+		void UpdateAllAsteroids(float deltaTIme, float currentTime, Vector2 screenCenter,Vector2 screenSize);
 
 		void DrawAllAsteroids();
 
-		void SpawnAsteeroid(Vector2 position, Vector2 velocity);
+		void SpawnAsteeroid(Vector2 screenCenter,Vector2 position);
 
 		Asteroid _asteroids[maxAsteroids];
 
@@ -27,6 +24,22 @@ class AsteroidsManager
 
 		const int asteroidRotSpeedMax = 240;
 
+		const int asteroidMoveSpeedMin = 100;
+		
+		const int asteroidMoveSpeedMax = 300;
 
+		const int asteroidRandomAngle = 30 * DEG2RAD;
+
+		const float asteroidSpawnDelay = 0.25f;
+
+		const Vector2 asteroidSpawnPadding = { 20,20 };
+
+		float lastASteroidCreationTime = -1;
+
+		const bool showAsteroidCount = true;
+
+		Asteroid CreateAstroid(Vector2 screenSize, Vector2 screenCenter);
+
+		Vector2 GetAsteroidSpawnPosition(Vector2 screenSize);
 };
 

@@ -12,7 +12,7 @@ class Asteroid
 {
 	public:
 		Asteroid();
-		Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed);
+		Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime);
 
 		virtual void AsteroidUpdate(float deltaTime);
 
@@ -26,4 +26,8 @@ class Asteroid
 		Movable movableStats;
 
 		AsteroidSize size;
+
+		float lifeTime = 10.0f;
+
+		float creationTime;
 };

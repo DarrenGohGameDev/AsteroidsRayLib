@@ -6,7 +6,7 @@ Asteroid::Asteroid()
 	active = false;
 }
 
-Asteroid::Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed)
+Asteroid::Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime)
 {
 	active = true;
 	movableStats.position = spawnPosition;
@@ -14,6 +14,7 @@ Asteroid::Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize sp
 	movableStats.rotationSpeed = spawnRotationSpeed;
 	movableStats.velocity = spawnVelocity;
 	size = spawnSize;
+	creationTime = createdTime;
 }
 
 void Asteroid::AsteroidUpdate(float deltaTime)
@@ -23,10 +24,19 @@ void Asteroid::AsteroidUpdate(float deltaTime)
 
 	movableStats.Move(deltaTime);
 	movableStats.rotation += movableStats.rotationSpeed * deltaTime;
+
+	if (GetTime() > creationTime + lifeTime)
+	{
+		active = false;
+		return;
+	}
 }
 
 void Asteroid::DrawAsteroid()
 {
+	if (!active)
+		return;
+
 	DrawPolyLines(movableStats.position, 3, 16*(int)(size), movableStats.rotation, WHITE);
 }
 
