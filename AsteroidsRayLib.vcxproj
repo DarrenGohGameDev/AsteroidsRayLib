@@ -145,6 +145,9 @@
     <ClCompile Include="src\Source\Movable.cpp" />
     <ClCompile Include="src\Source\Player.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Texture\ship.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
