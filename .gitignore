@@ -35,7 +35,7 @@
 *.ipch
 *.ipch
 .vs/
-.x64/
-.x86/
-.Debug/
-.Release/
+x64/
+x86/
+Debug/
+Release/
