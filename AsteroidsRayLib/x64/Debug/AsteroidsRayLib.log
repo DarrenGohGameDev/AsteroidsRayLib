@@ -1,3 +1,0 @@
-﻿  Main.cpp
-H:\projects\RayLib\AsteroidsRayLib\Main.cpp(15,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  AsteroidsRayLib.vcxproj -> H:\projects\RayLib\AsteroidsRayLib\x64\Debug\AsteroidsRayLib.exe

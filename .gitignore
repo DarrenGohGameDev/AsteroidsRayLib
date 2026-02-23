@@ -31,4 +31,11 @@
 *.out
 *.app
 *.vsidx
+*.vsidx
 *.ipch
+*.ipch
+.vs/
+x64/
+x86/
+Debug/
+Release/

@@ -18,7 +18,13 @@
     <ClInclude Include="src\Header\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Asteroids.h">
+    <ClInclude Include="src\Header\Movable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Header\Asteroid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Header\AsteroidsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,10 +32,16 @@
     <ClCompile Include="src\Source\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Asteroids.cpp">
+    <ClCompile Include="src\Source\Movable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Source\Asteroid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Source\AsteroidsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
