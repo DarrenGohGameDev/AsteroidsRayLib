@@ -36,15 +36,20 @@ void UpdateDrawFrame(void)
 	float deltaTime = GetFrameTime();
 	float currentTime = GetTime();
 	BeginDrawing();
-	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime,screenCenter,screenSize);
+	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, screenSize,screenCenter);
 
 	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 	{
-		asteroidManager.SpawnAsteeroid(screenCenter,screenSize);
+		asteroidManager.SpawnAsteeroid(screenSize,screenCenter);
 	}
 
 	ClearBackground(RED);
 	asteroidManager.DrawAllAsteroids();
+
+	if (asteroidManager.DebugingMode)
+	{
+		asteroidManager.DrawDebugLine();
+	}
 
 	EndDrawing();
 }

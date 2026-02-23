@@ -2,23 +2,18 @@
 H:\projects\RayLib\AsteroidsRayLib\src\Header\Asteroid.h(4,14): warning C4091: 'typedef ': ignored on left of 'AsteroidSize' when no variable is declared
   (compiling source file 'src/Source/AsteroidsManager.cpp')
   
-H:\projects\RayLib\AsteroidsRayLib\src\Header\AsteroidsManager.h(31,38): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-  (compiling source file 'src/Source/AsteroidsManager.cpp')
-  
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(73,25): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(83,171): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(83,120): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(83,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(95,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(95,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(95,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(100,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(100,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(100,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(106,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(106,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(106,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(111,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(111,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(111,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(71,25): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(89,103): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(89,81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(96,171): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(96,120): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(96,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(108,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(108,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(113,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(113,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(119,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(119,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(124,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+H:\projects\RayLib\AsteroidsRayLib\src\Source\AsteroidsManager.cpp(124,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   AsteroidsRayLib.vcxproj -> H:\projects\RayLib\AsteroidsRayLib\x64\Debug\AsteroidsRayLib.exe

@@ -1,7 +1,7 @@
 #include "AsteroidsManager.h"
 #include "raymath.h"
 
-void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime,Vector2 screenCenter,Vector2 screenSize)
+void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vector2 screenSize,Vector2 screenCenter)
 {
 	int totalActiveAsteroids = 0;
 
@@ -11,11 +11,11 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime,Vect
 
 		if (currentTime > lastASteroidCreationTime + asteroidSpawnDelay)
 		{
-			SpawnAsteeroid(screenCenter, screenSize);
+			SpawnAsteeroid(screenSize,screenCenter);
 			lastASteroidCreationTime = currentTime;
 		}
 
-		if (showAsteroidCount)
+		if (DebugingMode)
 		{
 			if (_asteroids[i].GetAsteroidStatus())
 			{
@@ -24,7 +24,7 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime,Vect
 		}
 	}
 
-	if (showAsteroidCount)
+	if (DebugingMode)
 	{
 		DrawText(TextFormat("ASTEROIDS:%d", totalActiveAsteroids), 20, 20, 32, WHITE);
 	}
@@ -38,11 +38,9 @@ void AsteroidsManager::DrawAllAsteroids()
 	}
 }
 
-void AsteroidsManager::SpawnAsteeroid(Vector2 screenCenter,Vector2 position)
+void AsteroidsManager::SpawnAsteeroid(Vector2 screenSize,Vector2 screenCenter)
 {
 	bool spawnNewAsteroid = false;
-
-	
 
 	for (size_t i = 0; i < maxAsteroids; i++)
 	{
@@ -51,7 +49,7 @@ void AsteroidsManager::SpawnAsteeroid(Vector2 screenCenter,Vector2 position)
 			continue;
 		}
 
-		Asteroid newAsteroid = CreateAstroid(position, screenCenter);
+		Asteroid newAsteroid = CreateAstroid(screenSize, screenCenter);
 		
 		_asteroids[i] = newAsteroid;
 
@@ -78,7 +76,22 @@ Asteroid AsteroidsManager::CreateAstroid(Vector2 screenSize, Vector2 screenCente
 
 	newAsteroidVelocity = Vector2Scale(Vector2Normalize(newAsteroidVelocity), newAsteroidSpeed);
 
-	Vector2Rotate(newAsteroidVelocity, (float)GetRandomValue(-asteroidRandomAngle, asteroidRandomAngle));
+	if (DebugingMode)
+	{
+		asteroidDebugSpawnLine0[0] = newAsteroidSpawnPosition;
+		asteroidDebugSpawnLine1[0] = newAsteroidSpawnPosition;
+		asteroidDebugSpawnLine2[0] = newAsteroidSpawnPosition;
+
+		asteroidDebugSpawnLine0[1] = Vector2Add(newAsteroidSpawnPosition, Vector2Rotate(Vector2Scale(newAsteroidVelocity, 10), -asteroidRandomAngle));
+		asteroidDebugSpawnLine1[1] = Vector2Add(newAsteroidSpawnPosition, Vector2Rotate(Vector2Scale(newAsteroidVelocity, 10), asteroidRandomAngle));
+	}
+
+	newAsteroidVelocity = Vector2Rotate(newAsteroidVelocity, (float)GetRandomValue(-asteroidRandomAngle, asteroidRandomAngle));
+
+	if (DebugingMode)
+	{
+		asteroidDebugSpawnLine2[1] = Vector2Add(newAsteroidSpawnPosition, Vector2Scale(newAsteroidVelocity, 10));
+	}
 
 	return Asteroid(newAsteroidSpawnPosition, newAsteroidVelocity, newAsteroidSize, GetRandomValue(0, 360), GetRandomValue(asteroidRotSpeedMin, asteroidRotSpeedMax), GetTime());
 }
@@ -92,26 +105,33 @@ Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize)
 	switch (side)
 	{
 		case 0: // Top
-			result.x = GetRandomValue(-screenSize.x, screenSize.x);
+			result.x = GetRandomValue(0, screenSize.x);
 			result.y = -(asteroidSpawnPadding.y);
 			break;
 		
 		case 1: // Bottom
-			result.x = GetRandomValue(-screenSize.x, screenSize.x);
+			result.x = GetRandomValue(0, screenSize.x);
 			result.y = screenSize.y + asteroidSpawnPadding.y;
 			break;
 
 		case 2: // Left
 			result.x = -asteroidSpawnPadding.x;
-			result.y = GetRandomValue(-screenSize.y, screenSize.y);
+			result.y = GetRandomValue(0, screenSize.y);
 			break;
 
 		case 3: // Right
 			result.x = screenSize.x + asteroidSpawnPadding.x;
-			result.y = GetRandomValue(-screenSize.y, screenSize.y);
+			result.y = GetRandomValue(0, screenSize.y);
 			break;
 	}
 
 	return result;
+}
+
+void AsteroidsManager::DrawDebugLine()
+{
+	DrawLineV(asteroidDebugSpawnLine0[0], asteroidDebugSpawnLine0[1],GREEN);
+	DrawLineV(asteroidDebugSpawnLine1[0], asteroidDebugSpawnLine1[1],BLUE);
+	DrawLineV(asteroidDebugSpawnLine2[0], asteroidDebugSpawnLine2[1],BLACK);
 }
 
