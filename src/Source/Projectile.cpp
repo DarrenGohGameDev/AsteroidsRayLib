@@ -50,10 +50,33 @@ void Projectile::DrawProjectile()
 
 	Rectangle rect = { movableStats.position.x,movableStats.position.y,projectileThicknes,projectileLength };
 	Vector2 origin = { rect.width / 2,rect.height / 2 };
+
 	DrawRectanglePro(rect, origin, movableStats.rotation +90.0f, BLUE);
 }
 
 bool Projectile::GetProjectileStatus()
 {
 	return active;
+}
+
+float Projectile::GetRadius()
+{
+	return projectileLength * 0.5f;
+}
+
+bool Projectile::CheckProjectileAsteroidCollision(Asteroid asteroid)
+{
+	if (!asteroid.GetAsteroidStatus())
+		return false;
+
+	float distance = Vector2Distance(movableStats.position, asteroid.movableStats.position);
+
+	bool hit = distance < (GetRadius() + asteroid.GetRadius());
+
+	if (hit)
+	{
+		active = false;
+	}
+
+	return hit;
 }

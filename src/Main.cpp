@@ -1,4 +1,4 @@
-#include "raylib.h"
+﻿#include "raylib.h"
 #include "time.h"
 #include "stdlib.h"
 #include "raymath.h"
@@ -47,6 +47,55 @@ void UpdateDrawFrame(void)
 
 	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, screenSize,screenCenter);
 	projectileManager.UpdateAllProjectile(deltaTime);
+
+	for (int p = 0; p < maxProjectiles; p++)
+	{
+		if (!projectileManager._projectile[p].GetProjectileStatus())
+			continue;
+
+		for (int a = 0; a < maxAsteroids; a++)
+		{
+			if (!asteroidManager._asteroids[a].GetAsteroidStatus())
+				continue;
+
+			if (projectileManager._projectile[p].CheckProjectileAsteroidCollision(
+				asteroidManager._asteroids[a]))
+			{
+				AsteroidSize hitResult = asteroidManager._asteroids[a].AsteroidHit();
+
+				if (hitResult != ASTEROIDS_SMALL)
+				{
+					switch (hitResult)
+					{
+					case ASTEROIDS_MEDIUM:
+
+						for (int i = 0; i < 2; i++)
+						{
+							asteroidManager.SpawnAsteeroid(asteroidManager._asteroids[a].movableStats.position, screenCenter, true, hitResult);
+						}
+
+						break;
+
+					case ASTEROIDS_LARGE:
+
+						for (int i = 0; i < 3; i++)
+						{
+							asteroidManager.SpawnAsteeroid(asteroidManager._asteroids[a].movableStats.position, screenCenter, true, hitResult);
+						}
+
+						break;
+
+					default:
+						break;
+					}
+				}
+				
+
+				break; // projectile destroyed → stop checking this projectile
+			}
+		}
+	}
+
 
 	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime))
 	{

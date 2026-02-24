@@ -38,7 +38,7 @@ void AsteroidsManager::DrawAllAsteroids()
 	}
 }
 
-void AsteroidsManager::SpawnAsteeroid(Vector2 screenSize,Vector2 screenCenter)
+void AsteroidsManager::SpawnAsteeroid(Vector2 screenSize,Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize)
 {
 	bool spawnNewAsteroid = false;
 
@@ -49,7 +49,7 @@ void AsteroidsManager::SpawnAsteeroid(Vector2 screenSize,Vector2 screenCenter)
 			continue;
 		}
 
-		Asteroid newAsteroid = CreateAstroid(screenSize, screenCenter);
+		Asteroid newAsteroid = CreateAstroid(screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
 		
 		_asteroids[i] = newAsteroid;
 
@@ -64,15 +64,41 @@ void AsteroidsManager::SpawnAsteeroid(Vector2 screenSize,Vector2 screenCenter)
 	}
 }
 
-Asteroid AsteroidsManager::CreateAstroid(Vector2 screenSize, Vector2 screenCenter)
+Asteroid AsteroidsManager::CreateAstroid(Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize)
 {
 	AsteroidSize newAsteroidSize = _asteroidsSize[GetRandomValue(0, 2)];
 
 	float newAsteroidSpeed = GetRandomValue(asteroidMoveSpeedMin, asteroidMoveSpeedMax);
 
-	Vector2 newAsteroidSpawnPosition = GetAsteroidSpawnPosition(screenSize);
+	Vector2 newAsteroidSpawnPosition = GetAsteroidSpawnPosition(screenSize, asteroidHitSpawn);
 
-	Vector2 newAsteroidVelocity = Vector2Subtract(screenCenter, newAsteroidSpawnPosition);
+	Vector2 newAsteroidVelocity = asteroidHitSpawn ? 
+		newAsteroidVelocity = Vector2Rotate(Vector2{ 0,1 }, (float)GetRandomValue(0, 359)) :
+		newAsteroidVelocity = Vector2Subtract(screenCenter, newAsteroidSpawnPosition);
+
+	if (asteroidHitSpawn)
+	{
+		switch (asteroidSize)
+		{
+		case ASTEROIDS_SMALL:
+			break;
+
+		case ASTEROIDS_MEDIUM:
+
+			newAsteroidSize = ASTEROIDS_SMALL;
+
+			break;
+
+		case ASTEROIDS_LARGE:
+
+			newAsteroidSize = ASTEROIDS_MEDIUM;
+
+			break;
+
+		default:
+			break;
+		}
+	}
 
 	newAsteroidVelocity = Vector2Scale(Vector2Normalize(newAsteroidVelocity), newAsteroidSpeed);
 
@@ -86,6 +112,8 @@ Asteroid AsteroidsManager::CreateAstroid(Vector2 screenSize, Vector2 screenCente
 		asteroidDebugSpawnLine1[1] = Vector2Add(newAsteroidSpawnPosition, Vector2Rotate(Vector2Scale(newAsteroidVelocity, 10), asteroidRandomAngle));
 	}
 
+	
+
 	newAsteroidVelocity = Vector2Rotate(newAsteroidVelocity, (float)GetRandomValue(-asteroidRandomAngle, asteroidRandomAngle));
 
 	if (DebugingMode)
@@ -93,10 +121,11 @@ Asteroid AsteroidsManager::CreateAstroid(Vector2 screenSize, Vector2 screenCente
 		asteroidDebugSpawnLine2[1] = Vector2Add(newAsteroidSpawnPosition, Vector2Scale(newAsteroidVelocity, 10));
 	}
 
+
 	return Asteroid(newAsteroidSpawnPosition, newAsteroidVelocity, newAsteroidSize, GetRandomValue(0, 360), GetRandomValue(asteroidRotSpeedMin, asteroidRotSpeedMax), GetTime());
 }
 
-Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize)
+Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize,bool asteroidHitSpawn)
 {
 	Vector2 result;
 
@@ -123,6 +152,11 @@ Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize)
 			result.x = screenSize.x + asteroidSpawnPadding.x;
 			result.y = GetRandomValue(0, screenSize.y);
 			break;
+	}
+
+	if (asteroidHitSpawn)
+	{
+		result = screenSize;
 	}
 
 	return result;

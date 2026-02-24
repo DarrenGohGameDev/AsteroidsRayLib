@@ -12,7 +12,7 @@ class AsteroidsManager
 
 		void DrawAllAsteroids();
 
-		void SpawnAsteeroid(Vector2 screenSize, Vector2 screenCenter);
+		void SpawnAsteeroid(Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn = false, AsteroidSize asteroidSize = ASTEROIDS_SMALL);
 
 		Asteroid _asteroids[maxAsteroids];
 
@@ -50,8 +50,8 @@ class AsteroidsManager
 
 		float lastASteroidCreationTime = -1;
 
-		Asteroid CreateAstroid(Vector2 screenSize, Vector2 screenCenter);
+		Asteroid CreateAstroid(Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize);
 
-		Vector2 GetAsteroidSpawnPosition(Vector2 screenSize);
+		Vector2 GetAsteroidSpawnPosition(Vector2 screenSize, bool asteroidHitSpawn);
 };
 

@@ -14,16 +14,20 @@ class Asteroid
 		Asteroid();
 		Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime);
 
+		Movable movableStats;
+
 		virtual void AsteroidUpdate(float deltaTime);
 
 		void DrawAsteroid();
 
 		bool GetAsteroidStatus();
 
+		float GetRadius();
+
+		AsteroidSize AsteroidHit();
+
 	protected:
 		bool active;
-
-		Movable movableStats;
 
 		AsteroidSize size;
 

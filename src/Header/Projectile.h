@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "Movable.h"
+#include "Asteroid.h"
 
 class Projectile
 {
@@ -17,16 +18,20 @@ class Projectile
 		void DrawProjectile();
 
 		bool GetProjectileStatus();
+
+		float GetRadius();
+
+		bool CheckProjectileAsteroidCollision(Asteroid asteroid);
 		
+		Movable movableStats;
+
 	protected :
 
 		bool active;
 
-		Movable movableStats;
-
 		float lifeTime = 10.0f;
 
-		float projectileSpeed = 400.0f;
+		float projectileSpeed = 600.0f;
 
 		float creationTime;
 

@@ -44,3 +44,14 @@ bool Asteroid::GetAsteroidStatus()
 {
 	return active;
 }
+
+float Asteroid::GetRadius()
+{
+	return 16 * (int)size;
+}
+
+AsteroidSize Asteroid::AsteroidHit()
+{
+	active = false;
+	return size;
+}
