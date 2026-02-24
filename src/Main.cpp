@@ -4,6 +4,7 @@
 #include "raymath.h"
 #include "Asteroid.h"
 #include "AsteroidsManager.h"
+#include "ProjectileManager.h"
 #include "Player.h"
 
 const int screenWidth = 600;
@@ -12,6 +13,8 @@ const Vector2 screenSize = { screenWidth,screenHeight };
 const Vector2 screenCenter = { screenWidth / 2,screenHeight / 2 };
 
 AsteroidsManager asteroidManager;
+
+ProjectileManager projectileManager;
 
 Player player(screenSize,screenCenter);
 
@@ -43,8 +46,14 @@ void UpdateDrawFrame(void)
 	player.PlayrUpdate(deltaTime);
 
 	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, screenSize,screenCenter);
+	projectileManager.UpdateAllProjectile(deltaTime);
 
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime))
+	{
+		projectileManager.SpawnProjectile(player.movableStats.position,player.movableStats.rotation,currentTime);
+	}
+
+	if (IsKeyPressed(KEY_SPACE))
 	{
 		asteroidManager.SpawnAsteeroid(screenSize,screenCenter);
 	}

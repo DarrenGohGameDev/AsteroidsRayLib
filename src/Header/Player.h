@@ -15,9 +15,11 @@ class Player
 		
 		void Init();
 
-	protected:
-
 		Movable movableStats;
+
+		bool CanFire(float currentTime);
+
+	protected:
 
 		Texture2D playerTexture;
 
@@ -26,6 +28,10 @@ class Player
 		void DrawPlayer();
 
 		Vector2 gameScreenSize;
+
+		float lastFireTime;
+
+		float playerFireRate = 0.25f;
 
 #pragma region PlayerMovement
 

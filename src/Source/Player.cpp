@@ -17,7 +17,7 @@ void Player::PlayrUpdate(float deltaTime)
 
 	playerFaceDirection = Vector2Subtract(GetMousePosition(),movableStats.position);
 
-	float angle = atan2f(playerFaceDirection.x, playerFaceDirection.y) * RAD2DEG;
+	float angle = atan2f(playerFaceDirection.y, playerFaceDirection.x) * RAD2DEG;
 
 	playerMoveDirection.x = (int)IsKeyDown(KEY_D) - (int)IsKeyDown(KEY_A);
 	playerMoveDirection.y = (int)IsKeyDown(KEY_S) - (int)IsKeyDown(KEY_W);
@@ -36,7 +36,7 @@ void Player::DrawPlayer()
 	const Rectangle source = { 0,0,32,32 };
 	Rectangle dest = { movableStats.position.x,movableStats.position.y, 48,48};
 	Vector2 origin = { dest.width / 2,dest.height / 2 };
-	DrawTexturePro(playerTexture, source,dest,origin,180-movableStats.rotation,WHITE);
+	DrawTexturePro(playerTexture, source,dest,origin,movableStats.rotation + 90.0f,WHITE);
 }
 
 void Player::WarpPlayerBackToScreen()
@@ -116,4 +116,17 @@ void Player::MovePlayer(Vector2 playerMovement,float playerFaceDirection,float d
 void Player::Init()
 {
 	playerTexture = LoadTexture("Assets/Texture/ship.png");
+}
+
+bool Player::CanFire(float currentTime)
+{
+	bool canFire = false;
+
+	if (currentTime > lastFireTime + playerFireRate)
+	{
+		canFire = true;
+		lastFireTime = currentTime;
+	}
+
+	return canFire;
 }
