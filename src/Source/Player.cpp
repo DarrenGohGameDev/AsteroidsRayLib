@@ -130,3 +130,35 @@ bool Player::CanFire(float currentTime)
 
 	return canFire;
 }
+
+float Player::GetRadius()
+{
+	return playerTexture.height * 0.5f;
+}
+
+bool Player::CheckProjectileAsteroidCollision(Asteroid asteroid)
+{
+	if (!asteroid.GetAsteroidStatus())
+		return false;
+
+	float distance = Vector2Distance(movableStats.position, asteroid.movableStats.position);
+
+	bool hit = distance < (GetRadius() + asteroid.GetRadius());
+
+	if (hit)
+	{
+		PlayerHit();
+	}
+
+	return hit;
+}
+
+void Player::PlayerHit()
+{
+	playerHp--;
+
+	if (playerHp <= 0)
+	{
+		active = false;
+	}
+}

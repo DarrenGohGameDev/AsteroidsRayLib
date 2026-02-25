@@ -93,6 +93,12 @@ void UpdateDrawFrame(void)
 
 				break; // projectile destroyed → stop checking this projectile
 			}
+
+			if (player.GetPlayerStatus() && player.CheckProjectileAsteroidCollision(asteroidManager._asteroids[a]))
+			{
+				//player.PlayerHit();
+				break;
+			}
 		}
 	}
 

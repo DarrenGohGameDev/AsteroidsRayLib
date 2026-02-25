@@ -1,5 +1,6 @@
 #pragma once
 #include "Movable.h"
+#include "Asteroid.h"
 
 class Player
 {
@@ -19,19 +20,28 @@ class Player
 
 		bool CanFire(float currentTime);
 
+		float GetRadius();
+
+		bool CheckProjectileAsteroidCollision(Asteroid asteroid);
+
+
 	protected:
 
 		Texture2D playerTexture;
 
 		bool active;
 
-		void DrawPlayer();
-
 		Vector2 gameScreenSize;
 
 		float lastFireTime;
 
 		float playerFireRate = 0.25f;
+
+		int playerHp = 3;
+
+		void PlayerHit();
+
+		void DrawPlayer();
 
 #pragma region PlayerMovement
 
