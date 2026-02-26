@@ -6,6 +6,8 @@ class Player
 {
 	public:
 
+		Player();
+
 		Player(Vector2 screenSize ,Vector2 screenCenter);
 
 		virtual void PlayrUpdate(float deltaTime);
@@ -24,7 +26,6 @@ class Player
 
 		bool CheckProjectileAsteroidCollision(Asteroid asteroid);
 
-
 	protected:
 
 		Texture2D playerTexture;
@@ -38,6 +39,12 @@ class Player
 		float playerFireRate = 0.25f;
 
 		int playerHp = 3;
+
+		bool immune = false;
+
+		float baseImmunityTimer = 3.0f;
+
+		float immunityTimer;
 
 		void PlayerHit();
 

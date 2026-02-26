@@ -96,9 +96,22 @@ void UpdateDrawFrame(void)
 
 			if (player.GetPlayerStatus() && player.CheckProjectileAsteroidCollision(asteroidManager._asteroids[a]))
 			{
-				//player.PlayerHit();
+
 				break;
 			}
+		}
+	}
+
+
+	for (int a = 0; a < maxAsteroids; a++)
+	{
+		if (!asteroidManager._asteroids[a].GetAsteroidStatus())
+			continue;
+
+		if (player.GetPlayerStatus() && player.CheckProjectileAsteroidCollision(asteroidManager._asteroids[a]))
+		{
+
+			break;
 		}
 	}
 

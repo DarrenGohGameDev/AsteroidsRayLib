@@ -1,12 +1,18 @@
 #include "Player.h"
 #include "raymath.h"
 
+Player::Player()
+{
+}
+
 Player::Player(Vector2 screenSize,Vector2 screenCenter)
 {
 	movableStats.rotation = 180;
 	movableStats.position = screenCenter;
 	active = true;
 	gameScreenSize = screenSize;
+	immune = false;
+	immunityTimer = baseImmunityTimer;
 }
 
 void Player::PlayrUpdate(float deltaTime)
@@ -25,6 +31,16 @@ void Player::PlayrUpdate(float deltaTime)
 	MovePlayer(playerMoveDirection, angle,deltaTime);
 
 	DrawPlayer();
+
+	if (immune)
+	{
+		immunityTimer -= deltaTime;
+		if (immunityTimer <= 0)
+		{
+			immune = false;
+			immunityTimer = baseImmunityTimer;
+		}
+	}
 }
 
 void Player::DrawPlayer()
@@ -37,6 +53,8 @@ void Player::DrawPlayer()
 	Rectangle dest = { movableStats.position.x,movableStats.position.y, 48,48};
 	Vector2 origin = { dest.width / 2,dest.height / 2 };
 	DrawTexturePro(playerTexture, source,dest,origin,movableStats.rotation + 90.0f,WHITE);
+
+	DrawText(TextFormat("Player HP:%d", playerHp), 40, 40, 32, WHITE);
 }
 
 void Player::WarpPlayerBackToScreen()
@@ -122,6 +140,11 @@ bool Player::CanFire(float currentTime)
 {
 	bool canFire = false;
 
+	if (!active)
+	{
+		return active;
+	}
+	
 	if (currentTime > lastFireTime + playerFireRate)
 	{
 		canFire = true;
@@ -155,10 +178,17 @@ bool Player::CheckProjectileAsteroidCollision(Asteroid asteroid)
 
 void Player::PlayerHit()
 {
+	if (immune)
+		return;
+
 	playerHp--;
 
 	if (playerHp <= 0)
 	{
 		active = false;
+	}
+	else
+	{
+		immune = true;
 	}
 }
