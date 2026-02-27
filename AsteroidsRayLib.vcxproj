@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="src\Header\Asteroid.h" />
     <ClInclude Include="src\Header\AsteroidsManager.h" />
+    <ClInclude Include="src\Header\GlobalManagerTemplate.h" />
     <ClInclude Include="src\Header\Movable.h" />
     <ClInclude Include="src\Header\Player.h" />
     <ClInclude Include="src\Header\Projectile.h" />
