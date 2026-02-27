@@ -136,6 +136,7 @@
     <ClInclude Include="src\Header\Asteroid.h" />
     <ClInclude Include="src\Header\AsteroidsManager.h" />
     <ClInclude Include="src\Header\GlobalManagerTemplate.h" />
+    <ClInclude Include="src\Header\InputManager.h" />
     <ClInclude Include="src\Header\Movable.h" />
     <ClInclude Include="src\Header\Player.h" />
     <ClInclude Include="src\Header\Projectile.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Source\Asteroid.cpp" />
     <ClCompile Include="src\Source\AsteroidsManager.cpp" />
+    <ClCompile Include="src\Source\InputManager.cpp" />
     <ClCompile Include="src\Source\Movable.cpp" />
     <ClCompile Include="src\Source\Player.cpp" />
     <ClCompile Include="src\Source\Projectile.cpp" />

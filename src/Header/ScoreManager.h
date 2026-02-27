@@ -7,7 +7,10 @@ public:
 
 	void UpdateScore(int amount);
 
+	void DrawScore();
+
 private:
+
 	int totalScore = 0;
 };
 

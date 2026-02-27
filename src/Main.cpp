@@ -45,7 +45,7 @@ void UpdateDrawFrame(void)
 	BeginDrawing();
 
 	player.PlayrUpdate(deltaTime);
-
+	ScoreManager::Get().DrawScore();
 	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, screenSize,screenCenter);
 	projectileManager.UpdateAllProjectile(deltaTime);
 
