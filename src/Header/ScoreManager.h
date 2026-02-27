@@ -5,7 +5,7 @@ class ScoreManager : public GlobalManagerTemplate<ScoreManager>
 {
 public:
 
-	void ChangeScore(int amount);
+	void UpdateScore(int amount);
 
 private:
 	int totalScore = 0;

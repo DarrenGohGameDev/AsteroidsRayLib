@@ -1,6 +1,6 @@
 #include "ScoreManager.h"
 
-void ScoreManager::ChangeScore(int amount)
+void ScoreManager::UpdateScore(int amount)
 {
 	totalScore += amount;
 }

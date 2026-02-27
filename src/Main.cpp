@@ -62,7 +62,7 @@ void UpdateDrawFrame(void)
 			if (projectileManager._projectile[p].CheckProjectileAsteroidCollision(
 				asteroidManager._asteroids[a]))
 			{
-				ScoreManager::Get().ChangeScore(1);
+				ScoreManager::Get().UpdateScore(1);
 
 				AsteroidSize hitResult = asteroidManager._asteroids[a].AsteroidHit();
 
