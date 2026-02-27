@@ -1,4 +1,8 @@
 #pragma once
+#include <stdexcept>
+#include <string>
+#include <typeinfo>
+
 template<typename T>
 
 class GlobalManagerTemplate
@@ -10,8 +14,8 @@ class GlobalManagerTemplate
 		{
 			if (instance)
 			{
-				throw std::runetime_error(
-					std::string("Duplicate manager created : ") + typeid(T).name();
+				throw std::runtime_error(
+					std::string("Duplicate manager created : ") + typeid(T).name()
 				);
 			}
 			instance = static_cast<T*>(this);
@@ -22,8 +26,9 @@ class GlobalManagerTemplate
 			instance = nullptr;
 		}
 
-		static <T*> Get()
+		static T& Get()
 		{
+			static T instance;
 			return instance;
 		}
 };

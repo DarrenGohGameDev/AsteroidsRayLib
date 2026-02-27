@@ -5,6 +5,7 @@
 #include "Asteroid.h"
 #include "AsteroidsManager.h"
 #include "ProjectileManager.h"
+#include "ScoreManager.h"
 #include "Player.h"
 
 const int screenWidth = 600;
@@ -61,6 +62,8 @@ void UpdateDrawFrame(void)
 			if (projectileManager._projectile[p].CheckProjectileAsteroidCollision(
 				asteroidManager._asteroids[a]))
 			{
+				ScoreManager::Get().ChangeScore(1);
+
 				AsteroidSize hitResult = asteroidManager._asteroids[a].AsteroidHit();
 
 				if (hitResult != ASTEROIDS_SMALL)

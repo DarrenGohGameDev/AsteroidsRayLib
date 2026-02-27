@@ -140,6 +140,7 @@
     <ClInclude Include="src\Header\Player.h" />
     <ClInclude Include="src\Header\Projectile.h" />
     <ClInclude Include="src\Header\ProjectileManager.h" />
+    <ClInclude Include="src\Header\ScoreManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="src\Source\Player.cpp" />
     <ClCompile Include="src\Source\Projectile.cpp" />
     <ClCompile Include="src\Source\ProjectileManager.cpp" />
+    <ClCompile Include="src\Source\ScoreManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Texture\ship.png" />
