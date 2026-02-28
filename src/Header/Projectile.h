@@ -2,8 +2,9 @@
 #include "raylib.h"
 #include "Movable.h"
 #include "Asteroid.h"
+#include "EntityTemplate.h"
 
-class Projectile
+class Projectile : public EntityTemplate
 {
 	public :
 
@@ -28,8 +29,6 @@ class Projectile
 	protected :
 
 		bool active;
-
-		float lifeTime = 10.0f;
 
 		float projectileSpeed = 600.0f;
 
