@@ -1,5 +1,6 @@
 #pragma once
 #include "Movable.h"
+#include "EntitiyTemplate.h"
 
 typedef enum AsteroidSize
 {
@@ -8,13 +9,15 @@ typedef enum AsteroidSize
 	ASTEROIDS_LARGE = 4,
 };
 
-class Asteroid
+class Asteroid :public EntitiyTemplate
 {
 	public:
 		Asteroid();
 		Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime);
 
 		Movable movableStats;
+
+		override void UpdateEntity(float deltaTime);
 
 		virtual void AsteroidUpdate(float deltaTime);
 
