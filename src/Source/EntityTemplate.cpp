@@ -22,3 +22,8 @@ void EntityTemplate::EntityUpdate(float deltaTime)
 		active = false;
 	}
 }
+
+void EntityTemplate::DrawEntity()
+{
+
+}

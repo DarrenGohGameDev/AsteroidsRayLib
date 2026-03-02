@@ -14,12 +14,7 @@ Projectile::Projectile(Vector2 spawnPosition, float spawnRotation, float creeate
 	active = true;
 }
 
-Projectile Projectile::CreateProjectile(Vector2 position, float rotation, float creeatedTime)
-{
-	return Projectile(position,rotation,creeatedTime);
-}
-
-void Projectile::ProjectileUpdate(float deltaTime)
+void Projectile::EntityUpdate(float deltaTime)
 {
 	if (!active)
 		return;
@@ -35,7 +30,7 @@ void Projectile::ProjectileUpdate(float deltaTime)
 	movableStats.position.x += direction.x * projectileSpeed * deltaTime;
 	movableStats.position.y += direction.y * projectileSpeed * deltaTime;
 
-	if (GetTime() > creationTime + lifeTime)
+	if (GetTime() > creationTime + currentLifeTime)
 	{
 		active = false;
 	}

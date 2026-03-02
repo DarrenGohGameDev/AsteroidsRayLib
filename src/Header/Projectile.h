@@ -12,11 +12,9 @@ class Projectile : public EntityTemplate
 
 		Projectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime);
 
-		Projectile CreateProjectile(Vector2 position,float rotation,float creeatedTime);
+		void EntityUpdate(float deltaTime) override;
 
-		void ProjectileUpdate(float deltaTime);
-
-		void DrawProjectile();
+		virtual void DrawProjectile();
 
 		bool GetProjectileStatus();
 
@@ -27,8 +25,6 @@ class Projectile : public EntityTemplate
 		Movable movableStats;
 
 	protected :
-
-		bool active;
 
 		float projectileSpeed = 600.0f;
 

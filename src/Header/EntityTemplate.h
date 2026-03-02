@@ -16,7 +16,9 @@ class EntityTemplate
 
 		virtual void EntityUpdate(float deltaTime);
 
-	private:
+		virtual void DrawEntity();
+
+	protected:
 
 		bool active;
 };

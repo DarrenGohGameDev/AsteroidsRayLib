@@ -5,7 +5,7 @@ void ProjectileManager::UpdateAllProjectile(float deltaTIme)
 {
 	for (int i = 0; i < maxProjectiles; i++)
 	{
-		_projectile[i].ProjectileUpdate(deltaTIme);
+		_projectile[i].EntityUpdate(deltaTIme);
 	}
 
 	DrawAllProjectile();

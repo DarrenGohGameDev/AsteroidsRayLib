@@ -133,9 +133,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="EntityTemplate.h" />
     <ClInclude Include="src\Header\Asteroid.h" />
     <ClInclude Include="src\Header\AsteroidsManager.h" />
+    <ClInclude Include="src\Header\EntityTemplate.h" />
     <ClInclude Include="src\Header\GlobalManagerTemplate.h" />
     <ClInclude Include="src\Header\InputManager.h" />
     <ClInclude Include="src\Header\Movable.h" />
@@ -145,10 +145,10 @@
     <ClInclude Include="src\Header\ScoreManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EntityTemplate.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Source\Asteroid.cpp" />
     <ClCompile Include="src\Source\AsteroidsManager.cpp" />
+    <ClCompile Include="src\Source\EntityTemplate.cpp" />
     <ClCompile Include="src\Source\InputManager.cpp" />
     <ClCompile Include="src\Source\Movable.cpp" />
     <ClCompile Include="src\Source\Player.cpp" />
