@@ -63,20 +63,27 @@ float EntityTemplate::GetEntityRadius()
 	return 0.0f;
 }
 
-bool EntityTemplate::CheckEntityCollision(EntityTemplate entity)
+bool EntityTemplate::CheckEntityCollision(EntityTemplate* entity)
 {
-	if (entity.GetCurrentEntityState() == DISABLE)
+	if (!entity)
+	{
+		TraceLog(LOG_DEBUG, "Entity is null for checking collision");
+		return false;
+	}
+
+	if (entity->GetCurrentEntityState() == DISABLE)
 		return false;
 
-	float distance = Vector2Distance(GetEntityPosition(), entity.GetEntityPosition());
+	float distance = Vector2Distance(GetEntityPosition(), entity->GetEntityPosition());
 
-	bool hit = distance < (GetEntityRadius() + entity.GetEntityRadius());
+	bool hit = distance < (GetEntityRadius() + entity->GetEntityRadius());
 
 	if (hit)
 	{
 		EntityHit();
 	}
 
+	
 	return hit;
 }
 

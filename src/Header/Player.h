@@ -22,9 +22,11 @@ class Player
 
 		bool CanFire(float currentTime);
 
-		float GetRadius();
+		float GetProjectileRadius();
 
 		bool CheckProjectileAsteroidCollision(Asteroid asteroid);
+
+		void DrawPlayer();
 
 	protected:
 
@@ -47,8 +49,6 @@ class Player
 		float immunityTimer;
 
 		void PlayerHit();
-
-		void DrawPlayer();
 
 #pragma region PlayerMovement
 

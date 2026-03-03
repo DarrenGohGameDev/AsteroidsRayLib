@@ -3,55 +3,53 @@
 
 Asteroid::Asteroid()
 {
-	active = false;
+
 }
 
 Asteroid::Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime)
 {
-	active = true;
-	movableStats.position = spawnPosition;
-	movableStats.rotation = spawnRotation;
-	movableStats.rotationSpeed = spawnRotationSpeed;
-	movableStats.velocity = spawnVelocity;
+	movement.position = spawnPosition;
+	movement.rotation = spawnRotation;
+	movement.rotationSpeed = spawnRotationSpeed;
+	movement.velocity = spawnVelocity;
 	size = spawnSize;
 	creationTime = createdTime;
+	ChangeEntityState(ACTIVE);
 }
 
-void Asteroid::AsteroidUpdate(float deltaTime)
+void Asteroid::EntityActiveStateUpdate(float deltaTime)
 {
-	if (!active)
+	movement.Move(deltaTime);
+	movement.rotation += movement.rotationSpeed * deltaTime;
+}
+
+void Asteroid::DrawEntity()
+{
+	if (GetCurrentEntityState() == DISABLE)
 		return;
 
-	movableStats.Move(deltaTime);
-	movableStats.rotation += movableStats.rotationSpeed * deltaTime;
+	DrawPolyLines(movement.position, 3, 16*(int)(size), movement.rotation, WHITE);
 
-	if (GetTime() > creationTime + lifeTime)
-	{
-		active = false;
-		return;
-	}
+	/*DrawCircleLines(
+		movement.position.x,
+		movement.position.y,
+		GetEntityRadius(),
+		GREEN
+	);*/
 }
 
-void Asteroid::DrawAsteroid()
-{
-	if (!active)
-		return;
-
-	DrawPolyLines(movableStats.position, 3, 16*(int)(size), movableStats.rotation, WHITE);
-}
-
-bool Asteroid::GetAsteroidStatus()
-{
-	return active;
-}
-
-float Asteroid::GetRadius()
+float Asteroid::GetEntityRadius()
 {
 	return 16 * (int)size;
 }
 
+void Asteroid::EntityHit()
+{
+	ChangeEntityState(DISABLE);
+}
+
 AsteroidSize Asteroid::AsteroidHit()
 {
-	active = false;
+	EntityHit();
 	return size;
 }

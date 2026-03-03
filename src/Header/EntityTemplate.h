@@ -27,7 +27,7 @@ class EntityTemplate
 
 		virtual float GetEntityRadius();
 
-		virtual bool CheckEntityCollision(EntityTemplate entity);
+		virtual bool CheckEntityCollision(EntityTemplate * entity);
 
 #pragma region STATES Enter / Update / Exit function
 

@@ -140,8 +140,8 @@
     <ClInclude Include="src\Header\InputManager.h" />
     <ClInclude Include="src\Header\Movable.h" />
     <ClInclude Include="src\Header\Player.h" />
-    <ClInclude Include="src\Header\Projectile.h" />
-    <ClInclude Include="src\Header\ProjectileManager.h" />
+    <ClInclude Include="src\Header\PlayerLazerProjectile.h" />
+    <ClInclude Include="src\Header\PlayerLazerProjectileManager.h" />
     <ClInclude Include="src\Header\ScoreManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -152,8 +152,8 @@
     <ClCompile Include="src\Source\InputManager.cpp" />
     <ClCompile Include="src\Source\Movable.cpp" />
     <ClCompile Include="src\Source\Player.cpp" />
-    <ClCompile Include="src\Source\Projectile.cpp" />
-    <ClCompile Include="src\Source\ProjectileManager.cpp" />
+    <ClCompile Include="src\Source\PlayerLazerProjectile.cpp" />
+    <ClCompile Include="src\Source\PlayerLazerProjectileManager.cpp" />
     <ClCompile Include="src\Source\ScoreManager.cpp" />
   </ItemGroup>
   <ItemGroup>

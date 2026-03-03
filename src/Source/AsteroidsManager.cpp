@@ -7,7 +7,7 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vec
 
 	for (int i = 0; i < maxAsteroids; i++)
 	{
-		_asteroids[i].AsteroidUpdate(deltaTime);
+		_asteroids[i].EntityUpdate(deltaTime);
 
 		if (currentTime > lastASteroidCreationTime + asteroidSpawnDelay)
 		{
@@ -17,7 +17,7 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vec
 
 		if (DebugingMode)
 		{
-			if (_asteroids[i].GetAsteroidStatus())
+			if (_asteroids[i].GetCurrentEntityState() == ACTIVE)
 			{
 				totalActiveAsteroids++;
 			}
@@ -34,7 +34,7 @@ void AsteroidsManager::DrawAllAsteroids()
 {
 	for (int i = 0; i < maxAsteroids; i++)
 	{
-		_asteroids[i].DrawAsteroid();
+		_asteroids[i].DrawEntity();
 	}
 }
 
@@ -44,7 +44,7 @@ void AsteroidsManager::SpawnAsteeroid(Vector2 screenSize,Vector2 screenCenter, b
 
 	for (size_t i = 0; i < maxAsteroids; i++)
 	{
-		if (_asteroids[i].GetAsteroidStatus())
+		if (_asteroids[i].GetCurrentEntityState() == ACTIVE)
 		{
 			continue;
 		}

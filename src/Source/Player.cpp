@@ -30,8 +30,6 @@ void Player::PlayrUpdate(float deltaTime)
 
 	MovePlayer(playerMoveDirection, angle,deltaTime);
 
-	DrawPlayer();
-
 	if (immune)
 	{
 		immunityTimer -= deltaTime;
@@ -154,19 +152,20 @@ bool Player::CanFire(float currentTime)
 	return canFire;
 }
 
-float Player::GetRadius()
+float Player::GetProjectileRadius()
 {
 	return playerTexture.height * 0.5f;
 }
 
 bool Player::CheckProjectileAsteroidCollision(Asteroid asteroid)
 {
-	if (!asteroid.GetAsteroidStatus())
+	return false;
+	if (asteroid.GetCurrentEntityState() == DISABLE)
 		return false;
 
-	float distance = Vector2Distance(movableStats.position, asteroid.movableStats.position);
+	float distance = Vector2Distance(movableStats.position, asteroid.GetEntityPosition());
 
-	bool hit = distance < (GetRadius() + asteroid.GetRadius());
+	bool hit = distance < (GetProjectileRadius() + asteroid.GetEntityRadius());
 
 	if (hit)
 	{

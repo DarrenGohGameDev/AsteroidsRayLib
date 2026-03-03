@@ -16,7 +16,7 @@ class AsteroidsManager
 
 		Asteroid _asteroids[maxAsteroids];
 
-		AsteroidSize _asteroidsSize[3] = {ASTEROIDS_SMALL, ASTEROIDS_MEDIUM,ASTEROIDS_LARGE };
+		AsteroidSize _asteroidsSize[3] = { ASTEROIDS_SMALL, ASTEROIDS_MEDIUM,ASTEROIDS_LARGE };
 
 #pragma region DEBUGING
 
@@ -40,7 +40,7 @@ class AsteroidsManager
 
 		const int asteroidMoveSpeedMin = 100;
 		
-		const int asteroidMoveSpeedMax = 300;
+		const int asteroidMoveSpeedMax = 50;
 
 		const float asteroidRandomAngle = 30 * DEG2RAD;
 

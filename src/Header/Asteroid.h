@@ -16,24 +16,17 @@ class Asteroid :public EntityTemplate
 
 		Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime);
 
-		Movable movableStats;
+		void EntityActiveStateUpdate(float deltaTime) override;
 
-		void EntityUpdate(float deltaTime) override;
+		void DrawEntity() override;
 
-		void DrawAsteroid();
+		float GetEntityRadius() override;
 
-		bool GetAsteroidStatus();
-
-		float GetRadius();
+		void EntityHit() override;
 
 		AsteroidSize AsteroidHit();
 
 	protected:
-		bool active;
 
 		AsteroidSize size;
-
-		float lifeTime = 10.0f;
-
-		float creationTime;
 };

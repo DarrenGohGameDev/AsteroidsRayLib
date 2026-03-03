@@ -1,24 +1,24 @@
 #pragma once
-#include "Projectile.h"
+#include "PlayerLazerProjectile.h"
 #include "raylib.h"
 
 #define maxProjectiles 64
 
-class ProjectileManager
+class PlayerLazerProjectileManager
 {
 	public :
 
 
-		Projectile _projectile[maxProjectiles];
+		PlayerLazerProjectile _projectile[maxProjectiles];
 
 		void UpdateAllProjectile(float deltaTIme);
 
 		void SpawnProjectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime);
 
-	protected:
-
 		void DrawAllProjectile();
 
-		Projectile CreateProjectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime);
+	protected:
+
+		PlayerLazerProjectile CreateProjectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime);
 };
 

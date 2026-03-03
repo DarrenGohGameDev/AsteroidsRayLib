@@ -4,7 +4,7 @@
 #include "raymath.h"
 #include "Asteroid.h"
 #include "AsteroidsManager.h"
-#include "ProjectileManager.h"
+#include "PlayerLazerProjectileManager.h"
 #include "ScoreManager.h"
 #include "Player.h"
 
@@ -15,7 +15,7 @@ const Vector2 screenCenter = { screenWidth / 2,screenHeight / 2 };
 
 AsteroidsManager asteroidManager;
 
-ProjectileManager projectileManager;
+PlayerLazerProjectileManager projectileManager;
 
 Player player(screenSize,screenCenter);
 
@@ -24,6 +24,9 @@ void UpdateDrawFrame(void);
 int main(void)
 {
 	srand(time(0));
+
+	SetTraceLogLevel(LOG_DEBUG);
+
 	InitWindow(screenWidth, screenHeight,"Test");
 	player.Init();
 	SetTargetFPS(60);
@@ -44,23 +47,25 @@ void UpdateDrawFrame(void)
 	float currentTime = GetTime();
 	BeginDrawing();
 
+	ClearBackground(RED);
+
 	player.PlayrUpdate(deltaTime);
-	ScoreManager::Get().DrawScore();
+
 	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, screenSize,screenCenter);
+
 	projectileManager.UpdateAllProjectile(deltaTime);
 
 	for (int p = 0; p < maxProjectiles; p++)
 	{
-		if (!projectileManager._projectile[p].GetProjectileStatus())
+		if (projectileManager._projectile[p].GetCurrentEntityState() == DISABLE)
 			continue;
 
 		for (int a = 0; a < maxAsteroids; a++)
 		{
-			if (!asteroidManager._asteroids[a].GetAsteroidStatus())
+			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
 				continue;
 
-			if (projectileManager._projectile[p].CheckProjectileAsteroidCollision(
-				asteroidManager._asteroids[a]))
+			if (projectileManager._projectile[p].CheckEntityCollision(&asteroidManager._asteroids[a]))
 			{
 				ScoreManager::Get().UpdateScore(1);
 
@@ -74,7 +79,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 2; i++)
 						{
-							asteroidManager.SpawnAsteeroid(asteroidManager._asteroids[a].movableStats.position, screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteeroid(asteroidManager._asteroids[a].GetEntityPosition(), screenCenter, true, hitResult);
 						}
 
 						break;
@@ -83,7 +88,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 3; i++)
 						{
-							asteroidManager.SpawnAsteeroid(asteroidManager._asteroids[a].movableStats.position, screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteeroid(asteroidManager._asteroids[a].GetEntityPosition(), screenCenter, true, hitResult);
 						}
 
 						break;
@@ -96,25 +101,21 @@ void UpdateDrawFrame(void)
 
 				break; // projectile destroyed → stop checking this projectile
 			}
+		}
+	}
 
-			if (player.GetPlayerStatus() && player.CheckProjectileAsteroidCollision(asteroidManager._asteroids[a]))
+	if (player.GetPlayerStatus())
+	{
+		for (int a = 0; a < maxAsteroids; a++)
+		{
+			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
+				continue;
+
+			if (player.CheckProjectileAsteroidCollision(asteroidManager._asteroids[a]))
 			{
 
 				break;
 			}
-		}
-	}
-
-
-	for (int a = 0; a < maxAsteroids; a++)
-	{
-		if (!asteroidManager._asteroids[a].GetAsteroidStatus())
-			continue;
-
-		if (player.GetPlayerStatus() && player.CheckProjectileAsteroidCollision(asteroidManager._asteroids[a]))
-		{
-
-			break;
 		}
 	}
 
@@ -129,13 +130,18 @@ void UpdateDrawFrame(void)
 		asteroidManager.SpawnAsteeroid(screenSize,screenCenter);
 	}
 
-	ClearBackground(RED);
-	asteroidManager.DrawAllAsteroids();
-
 	if (asteroidManager.DebugingMode)
 	{
 		asteroidManager.DrawDebugLine();
 	}
+
+	player.DrawPlayer();
+
+	asteroidManager.DrawAllAsteroids();
+
+	projectileManager.DrawAllProjectile();
+
+	ScoreManager::Get().DrawScore();
 
 	EndDrawing();
 }
