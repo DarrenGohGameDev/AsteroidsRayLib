@@ -3,10 +3,12 @@
 
 struct Movable
 {
-	float rotation;
-	float rotationSpeed;
-	Vector2 position;
-	Vector2 velocity;
+	public:
 
-	virtual void Move(float deltaTime);
+		float rotation;
+		float rotationSpeed;
+		Vector2 position;
+		Vector2 velocity;
+
+		virtual void Move(float deltaTime);
 };
