@@ -1,8 +1,9 @@
 #pragma once
 #include "Movable.h"
 #include "Asteroid.h"
+#include "EntityTemplate.h"
 
-class Player
+class Player : public EntityTemplate
 {
 	public:
 
@@ -10,45 +11,33 @@ class Player
 
 		Player(Vector2 screenSize ,Vector2 screenCenter);
 
-		virtual void PlayrUpdate(float deltaTime);
+		void EntityActiveStateUpdate(float deltaTime) override;
 
-		bool GetPlayerStatus();
+		void EntityInvulnerableStateEnter() override;
 
-		void MovePlayer(Vector2 playerMovement, float playerFaceDirection, float deltaTime);
+		void EntityInvulnerableStateUpdate(float deltaTime) override;
+
+		void EntityInvulnerableStateExit() override;
 		
-		void Init();
+		void LoadPlayerTexture();
 
-		Movable movableStats;
+		float GetEntityRadius() override;
 
 		bool CanFire(float currentTime);
 
-		float GetProjectileRadius();
+		void DrawEntity() override;
 
-		bool CheckProjectileAsteroidCollision(Asteroid asteroid);
-
-		void DrawPlayer();
+		void EntityHit() override;
 
 	protected:
 
 		Texture2D playerTexture;
-
-		bool active;
 
 		Vector2 gameScreenSize;
 
 		float lastFireTime;
 
 		float playerFireRate = 0.25f;
-
-		int playerHp = 3;
-
-		bool immune = false;
-
-		float baseImmunityTimer = 3.0f;
-
-		float immunityTimer;
-
-		void PlayerHit();
 
 #pragma region PlayerMovement
 
@@ -63,6 +52,8 @@ class Player
 		float playerRadius = 24.0f;
 
 		float playerWarpBackToScreenNudge = 100.0f;
+
+		void PlayerMovement(float deltaTime);
 
 		void WarpPlayerBackToScreen();
 

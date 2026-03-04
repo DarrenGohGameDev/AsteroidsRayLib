@@ -28,7 +28,7 @@ int main(void)
 	SetTraceLogLevel(LOG_DEBUG);
 
 	InitWindow(screenWidth, screenHeight,"Test");
-	player.Init();
+	player.LoadPlayerTexture();
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
@@ -49,7 +49,7 @@ void UpdateDrawFrame(void)
 
 	ClearBackground(RED);
 
-	player.PlayrUpdate(deltaTime);
+	player.EntityUpdate(deltaTime);
 
 	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, screenSize,screenCenter);
 
@@ -104,14 +104,14 @@ void UpdateDrawFrame(void)
 		}
 	}
 
-	if (player.GetPlayerStatus())
+	if (player.GetCurrentEntityState() == ACTIVE)
 	{
 		for (int a = 0; a < maxAsteroids; a++)
 		{
 			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
 				continue;
 
-			if (player.CheckProjectileAsteroidCollision(asteroidManager._asteroids[a]))
+			if (player.CheckEntityCollision(&asteroidManager._asteroids[a]))
 			{
 
 				break;
@@ -122,7 +122,7 @@ void UpdateDrawFrame(void)
 
 	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime))
 	{
-		projectileManager.SpawnProjectile(player.movableStats.position,player.movableStats.rotation,currentTime);
+		projectileManager.SpawnProjectile(player.GetEntityPosition(), player.GetEntityRotation(), currentTime);
 	}
 
 	if (IsKeyPressed(KEY_SPACE))
@@ -135,7 +135,7 @@ void UpdateDrawFrame(void)
 		asteroidManager.DrawDebugLine();
 	}
 
-	player.DrawPlayer();
+	player.DrawEntity();
 
 	asteroidManager.DrawAllAsteroids();
 

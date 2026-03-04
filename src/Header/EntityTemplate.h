@@ -29,6 +29,33 @@ class EntityTemplate
 
 		virtual bool CheckEntityCollision(EntityTemplate * entity);
 
+#pragma region MovementGetter function
+
+		float GetEntityRotation() { return movement.rotation; }
+		float GetEntityRotationSpeed() { return movement.rotationSpeed; }
+		Vector2 GetEntityPosition() { return movement.position; }
+		Vector2 GetEntityVelocity() { return movement.velocity; }
+
+#pragma endregion
+
+	protected:
+
+		int entityHp = 3;
+
+		float baseImmunityTimer = 3.0f;
+
+		float immunityTimer;
+
+		float baseLifeTime = 10.0f;
+
+		float currentLifeTime = 0.0f;
+
+		float creationTime;
+
+		bool useEntityActiveTimer = true;
+
+		Movable movement;
+
 #pragma region STATES Enter / Update / Exit function
 
 		virtual void EntityActiveStateEnter();
@@ -49,27 +76,6 @@ class EntityTemplate
 		void ChangeEntityState(ENTITYSTATE state);
 
 #pragma endregion
-
-#pragma region MovementGetter function
-
-		float GetEntityRotation() { return movement.rotation; }
-		float GetEntityRotationSpeed() { return movement.rotationSpeed; }
-		Vector2 GetEntityPosition() { return movement.position; }
-		Vector2 GetEntityVelocity() { return movement.velocity; }
-
-#pragma endregion
-
-	protected:
-
-		float baseLifeTime = 10.0f;
-
-		float currentLifeTime = 0.0f;
-
-		float creationTime;
-
-		bool useEntityActiveTimer = true;
-
-		Movable movement;
 
 	private:
 
