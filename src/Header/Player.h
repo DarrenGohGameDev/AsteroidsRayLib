@@ -1,6 +1,4 @@
 #pragma once
-#include "Movable.h"
-#include "Asteroid.h"
 #include "EntityTemplate.h"
 
 class Player : public EntityTemplate
