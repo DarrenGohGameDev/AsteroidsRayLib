@@ -7,6 +7,7 @@
 #include "PlayerLazerProjectileManager.h"
 #include "ScoreManager.h"
 #include "Player.h"
+#include "SoundManager.h"
 
 const int screenWidth = 600;
 const int screenHeight = 600;
@@ -28,7 +29,12 @@ int main(void)
 	SetTraceLogLevel(LOG_DEBUG);
 
 	InitWindow(screenWidth, screenHeight,"Test");
+
+	SoundManager::Get().LoadSfxAssets();
 	player.LoadPlayerTexture();
+
+	PlayMusicStream(SoundManager::Get().BGM);
+
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
@@ -69,6 +75,8 @@ void UpdateDrawFrame(void)
 			{
 				ScoreManager::Get().UpdateScore(1);
 
+				PlaySound(SoundManager::Get().AsteroidHit);
+
 				AsteroidSize hitResult = asteroidManager._asteroids[a].AsteroidHit();
 
 				if (hitResult != ASTEROIDS_SMALL)
@@ -97,7 +105,6 @@ void UpdateDrawFrame(void)
 						break;
 					}
 				}
-				
 
 				break; // projectile destroyed → stop checking this projectile
 			}
@@ -113,7 +120,7 @@ void UpdateDrawFrame(void)
 
 			if (player.CheckEntityCollision(&asteroidManager._asteroids[a]))
 			{
-
+				PlaySound(SoundManager::Get().playerHit);
 				break;
 			}
 		}
@@ -134,6 +141,8 @@ void UpdateDrawFrame(void)
 	{
 		asteroidManager.DrawDebugLine();
 	}
+
+	UpdateMusicStream(SoundManager::Get().BGM);
 
 	player.DrawEntity();
 

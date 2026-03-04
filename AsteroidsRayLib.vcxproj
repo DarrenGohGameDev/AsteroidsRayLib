@@ -138,6 +138,7 @@
     <ClInclude Include="src\Header\Asteroid.h" />
     <ClInclude Include="src\Header\AsteroidsManager.h" />
     <ClInclude Include="src\Header\EntityTemplate.h" />
+    <ClInclude Include="src\Header\GameManager.h" />
     <ClInclude Include="src\Header\GlobalManagerTemplate.h" />
     <ClInclude Include="src\Header\InputManager.h" />
     <ClInclude Include="src\Header\Movable.h" />
@@ -145,11 +146,13 @@
     <ClInclude Include="src\Header\PlayerLazerProjectile.h" />
     <ClInclude Include="src\Header\PlayerLazerProjectileManager.h" />
     <ClInclude Include="src\Header\ScoreManager.h" />
+    <ClInclude Include="src\Header\SoundManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Source\Asteroid.cpp" />
     <ClCompile Include="src\Source\AsteroidsManager.cpp" />
     <ClCompile Include="src\Source\EntityTemplate.cpp" />
+    <ClCompile Include="src\Source\GameManager.cpp" />
     <ClCompile Include="src\Source\InputManager.cpp" />
     <ClCompile Include="src\Source\Main.cpp" />
     <ClCompile Include="src\Source\Movable.cpp" />
@@ -157,6 +160,7 @@
     <ClCompile Include="src\Source\PlayerLazerProjectile.cpp" />
     <ClCompile Include="src\Source\PlayerLazerProjectileManager.cpp" />
     <ClCompile Include="src\Source\ScoreManager.cpp" />
+    <ClCompile Include="src\Source\SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Texture\ship.png" />

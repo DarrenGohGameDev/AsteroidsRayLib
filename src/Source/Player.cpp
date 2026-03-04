@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "raymath.h"
+#include "SoundManager.h"
 
 Player::Player()
 {
@@ -103,6 +104,8 @@ void Player::PlayerMovement(float deltaTime)
 
 	movement.rotation = angle;
 
+	PlaySound(SoundManager::Get().playerMove);
+
 	if (Vector2Length(playerMovement) > 0.0f)
 	{
 		Vector2 accelDir = Vector2Normalize(playerMovement);
@@ -150,6 +153,7 @@ bool Player::CanFire(float currentTime)
 	{
 		canFire = true;
 		lastFireTime = currentTime;
+		PlaySound(SoundManager::Get().playerShoot);
 	}
 
 	return canFire;
@@ -169,6 +173,7 @@ void Player::EntityHit()
 
 	if (entityHp <= 0)
 	{
+		PlaySound(SoundManager::Get().playerDeath);
 		ChangeEntityState(DISABLE);
 	}
 	else

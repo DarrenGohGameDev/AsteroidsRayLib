@@ -26,7 +26,7 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vec
 
 	if (DebugingMode)
 	{
-		DrawText(TextFormat("ASTEROIDS:%d", totalActiveAsteroids), 20, 20, 32, WHITE);
+		DrawText(TextFormat("ASTEROIDS:%d", totalActiveAsteroids), 20, 90, 32, WHITE);
 	}
 }
 
