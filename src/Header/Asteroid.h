@@ -14,7 +14,7 @@ class Asteroid :public EntityTemplate
 	public:
 		Asteroid();
 
-		Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime);
+		void Init(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime);
 
 		void EntityActiveStateUpdate(float deltaTime) override;
 

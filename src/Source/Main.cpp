@@ -66,7 +66,7 @@ void UpdateDrawFrame(void)
 		if (projectileManager._projectile[p].GetCurrentEntityState() == DISABLE)
 			continue;
 
-		for (int a = 0; a < maxAsteroids; a++)
+		for (size_t a = 0; a < asteroidManager._asteroids.size(); a++)
 		{
 			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
 				continue;
@@ -113,7 +113,7 @@ void UpdateDrawFrame(void)
 
 	if (player.GetCurrentEntityState() == ACTIVE)
 	{
-		for (int a = 0; a < maxAsteroids; a++)
+		for (size_t a = 0; a < asteroidManager._asteroids.size(); a++)
 		{
 			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
 				continue;

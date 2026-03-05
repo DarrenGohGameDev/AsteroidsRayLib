@@ -6,7 +6,7 @@ Asteroid::Asteroid()
 
 }
 
-Asteroid::Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime)
+void Asteroid::Init(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime)
 {
 	movement.position = spawnPosition;
 	movement.rotation = spawnRotation;
@@ -14,6 +14,7 @@ Asteroid::Asteroid(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize sp
 	movement.velocity = spawnVelocity;
 	size = spawnSize;
 	creationTime = createdTime;
+	currentLifeTime = baseLifeTime;
 	ChangeEntityState(ACTIVE);
 }
 
