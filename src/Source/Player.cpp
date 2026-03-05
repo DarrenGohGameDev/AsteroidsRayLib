@@ -10,6 +10,7 @@ Player::Player(Vector2 screenSize,Vector2 screenCenter)
 	movement.rotation = 180;
 	movement.position = screenCenter;
 	gameScreenSize = screenSize;
+	useEntityActiveTimer = false;
 	ChangeEntityState(ACTIVE);
 }
 
