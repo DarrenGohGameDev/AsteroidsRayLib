@@ -6,11 +6,12 @@ PlayerLazerProjectile::PlayerLazerProjectile()
 
 }
 
-PlayerLazerProjectile::PlayerLazerProjectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime)
+void PlayerLazerProjectile::Init(Vector2 spawnPosition, float spawnRotation, float creeatedTime)
 {
 	movement.position = spawnPosition;
 	movement.rotation = spawnRotation;
 	creationTime = creeatedTime;
+	currentLifeTime = baseLifeTime;
 	ChangeEntityState(ACTIVE);
 }
 
@@ -38,10 +39,13 @@ void PlayerLazerProjectile::DrawEntity()
 
 	DrawRectanglePro(rect, origin, movement.rotation + 90.0f, BLUE);
 
-	/*DrawCircle(movement.position.x,
-		movement.position.y,
-		GetEntityRadius(),
-		Fade(GREEN, 0.2f));*/
+	if (debugMode)
+	{
+		DrawCircle(movement.position.x,
+				movement.position.y,
+				GetEntityRadius(),
+				Fade(GREEN, 0.2f));
+	}
 }
 
 float PlayerLazerProjectile::GetEntityRadius()

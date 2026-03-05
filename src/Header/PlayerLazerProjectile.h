@@ -10,7 +10,7 @@ class PlayerLazerProjectile : public EntityTemplate
 
 		PlayerLazerProjectile();
 
-		PlayerLazerProjectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime);
+		void Init(Vector2 spawnPosition, float spawnRotation, float creeatedTime);
 
 		void EntityActiveStateUpdate(float deltaTime) override;
 

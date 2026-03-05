@@ -1,15 +1,17 @@
 #pragma once
 #include "PlayerLazerProjectile.h"
 #include "raylib.h"
+#include <vector>
 
-#define maxProjectiles 64
+#define initialProjectilesSpawnAmount 30
 
 class PlayerLazerProjectileManager
 {
 	public :
 
+		PlayerLazerProjectileManager();
 
-		PlayerLazerProjectile _projectile[maxProjectiles];
+		std::vector<PlayerLazerProjectile>  _projectile;
 
 		void UpdateAllProjectile(float deltaTIme);
 
@@ -17,8 +19,11 @@ class PlayerLazerProjectileManager
 
 		void DrawAllProjectile();
 
+		const bool debugMode = false;
+
 	protected:
 
-		PlayerLazerProjectile CreateProjectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime);
+		void CreateProjectile(PlayerLazerProjectile* inactiveProjectile,Vector2 spawnPosition, float spawnRotation, float creeatedTime);
+
 };
 

@@ -31,12 +31,15 @@ void Asteroid::DrawEntity()
 
 	DrawPolyLines(movement.position, 3, 16*(int)(size), movement.rotation, WHITE);
 
-	/*DrawCircleLines(
-		movement.position.x,
-		movement.position.y,
-		GetEntityRadius(),
-		GREEN
-	);*/
+	if (debugMode)
+	{
+		DrawCircleLines(
+			movement.position.x,
+			movement.position.y,
+			GetEntityRadius(),
+			GREEN
+		);
+	}
 }
 
 float Asteroid::GetEntityRadius()

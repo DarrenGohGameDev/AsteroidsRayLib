@@ -20,7 +20,7 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vec
 	{
 		_asteroids[i].EntityUpdate(deltaTime);
 
-		if (DebugingMode)
+		if (debugMode)
 		{
 			if (_asteroids[i].GetCurrentEntityState() == ACTIVE)
 			{
@@ -29,7 +29,7 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vec
 		}
 	}
 
-	if (DebugingMode)
+	if (debugMode)
 	{
 		DrawText(TextFormat("ASTEROIDS:%d", totalActiveAsteroids), 20, 90, 32, WHITE);
 		DrawText(TextFormat("ASTEROIDS Size:%d", _asteroids.size()), 20, 140, 32, WHITE);
@@ -104,7 +104,7 @@ void AsteroidsManager::CreateAstroid(Asteroid* inactiveAsteroid,Vector2 screenSi
 
 	newAsteroidVelocity = Vector2Scale(Vector2Normalize(newAsteroidVelocity), newAsteroidSpeed);
 
-	if (DebugingMode)
+	if (debugMode)
 	{
 		asteroidDebugSpawnLine0[0] = newAsteroidSpawnPosition;
 		asteroidDebugSpawnLine1[0] = newAsteroidSpawnPosition;
@@ -116,7 +116,7 @@ void AsteroidsManager::CreateAstroid(Asteroid* inactiveAsteroid,Vector2 screenSi
 
 	newAsteroidVelocity = Vector2Rotate(newAsteroidVelocity, (float)GetRandomValue(-asteroidRandomAngle, asteroidRandomAngle));
 
-	if (DebugingMode)
+	if (debugMode)
 	{
 		asteroidDebugSpawnLine2[1] = Vector2Add(newAsteroidSpawnPosition, Vector2Scale(newAsteroidVelocity, 10));
 	}

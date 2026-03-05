@@ -61,7 +61,7 @@ void UpdateDrawFrame(void)
 
 	projectileManager.UpdateAllProjectile(deltaTime);
 
-	for (int p = 0; p < maxProjectiles; p++)
+	for (size_t p = 0; p < projectileManager._projectile.size(); p++)
 	{
 		if (projectileManager._projectile[p].GetCurrentEntityState() == DISABLE)
 			continue;
@@ -137,7 +137,7 @@ void UpdateDrawFrame(void)
 		asteroidManager.SpawnAsteeroid(screenSize,screenCenter);
 	}
 
-	if (asteroidManager.DebugingMode)
+	if (asteroidManager.debugMode)
 	{
 		asteroidManager.DrawDebugLine();
 	}

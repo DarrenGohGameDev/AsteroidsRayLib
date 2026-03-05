@@ -23,7 +23,7 @@ class AsteroidsManager
 
 #pragma region DEBUGING
 
-		const bool DebugingMode = true;
+		const bool debugMode = false;
 
 		Vector2 asteroidDebugSpawnLine0[2];
 
