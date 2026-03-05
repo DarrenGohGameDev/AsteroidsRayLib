@@ -176,6 +176,7 @@ void Player::EntityHit()
 	if (entityHp <= 0)
 	{
 		PlaySound(SoundManager::Get().playerDeath);
+		GameManager::Get().GetDispatcher().trigger(GameEndRequest{});
 		ChangeEntityState(DISABLE);
 	}
 	else
