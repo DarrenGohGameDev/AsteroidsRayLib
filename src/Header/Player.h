@@ -1,5 +1,6 @@
 #pragma once
 #include "EntityTemplate.h"
+#include "entt/entt.hpp"
 
 class Player : public EntityTemplate
 {
@@ -36,6 +37,10 @@ class Player : public EntityTemplate
 		float lastFireTime;
 
 		float playerFireRate = 0.25f;
+
+		Vector2 playerSpawnPosition;
+
+		void ResetEntity() override;
 
 #pragma region PlayerMovement
 

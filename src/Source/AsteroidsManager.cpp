@@ -1,9 +1,11 @@
 #include "AsteroidsManager.h"
+#include "GameManager.h"
 #include "raymath.h"
 
 AsteroidsManager::AsteroidsManager()
 {
 	_asteroids.resize(initialAsteroidsSpawnAmount);
+	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&AsteroidsManager::OnGameReset>(this);
 }
 
 void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vector2 screenSize,Vector2 screenCenter)
@@ -12,7 +14,7 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vec
 
 	if (currentTime > lastASteroidCreationTime + asteroidSpawnDelay)
 	{
-		SpawnAsteeroid(screenSize, screenCenter);
+		SpawnAsteroid(screenSize, screenCenter);
 		lastASteroidCreationTime = currentTime;
 	}
 
@@ -44,15 +46,18 @@ void AsteroidsManager::DrawAllAsteroids()
 	}
 }
 
-void AsteroidsManager::SpawnAsteeroid(Vector2 screenSize,Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize)
+void AsteroidsManager::SpawnAsteroid(Vector2 screenSize,Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize)
 {
+	if (GameManager::Get().GetCurrentGameState() != PLAYING)
+		return;
+
 	bool reuseAsteroid = false;
 
 	for (size_t i = 0; i < _asteroids.size(); i++)
 	{
 		if (_asteroids[i].GetCurrentEntityState() != ACTIVE)
 		{
-			CreateAstroid(&_asteroids[i], screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
+			CreateAsteroid(&_asteroids[i], screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
 
 			reuseAsteroid = true;
 			return;
@@ -62,11 +67,11 @@ void AsteroidsManager::SpawnAsteeroid(Vector2 screenSize,Vector2 screenCenter, b
 	if (!reuseAsteroid)
 	{
 		_asteroids.emplace_back();
-		CreateAstroid(&_asteroids.back(), screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
+		CreateAsteroid(&_asteroids.back(), screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
 	}
 }
 
-void AsteroidsManager::CreateAstroid(Asteroid* inactiveAsteroid,Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize)
+void AsteroidsManager::CreateAsteroid(Asteroid* inactiveAsteroid,Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize)
 {
 	AsteroidSize newAsteroidSize = _asteroidsSize[GetRandomValue(0, 2)];
 
@@ -159,6 +164,11 @@ Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize,bool aster
 	}
 
 	return result;
+}
+
+void AsteroidsManager::OnGameReset()
+{
+	lastASteroidCreationTime = -1;
 }
 
 void AsteroidsManager::DrawDebugLine()

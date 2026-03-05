@@ -1,5 +1,6 @@
 #include "Asteroid.h"
 #include "raymath.h"
+#include "GameManager.h"
 
 Asteroid::Asteroid()
 {
@@ -21,7 +22,7 @@ void Asteroid::Init(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize s
 void Asteroid::EntityActiveStateUpdate(float deltaTime)
 {
 	movement.Move(deltaTime);
-	movement.rotation += movement.rotationSpeed * deltaTime;
+	movement.rotation += movement.rotationSpeed * deltaTime * GameManager::Get().GetCurrentGameSpeed();
 }
 
 void Asteroid::DrawEntity()
@@ -56,4 +57,9 @@ AsteroidSize Asteroid::AsteroidHit()
 {
 	EntityHit();
 	return size;
+}
+
+void Asteroid::ResetEntity()
+{
+	ChangeEntityState(DISABLE);
 }

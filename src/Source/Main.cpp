@@ -8,6 +8,7 @@
 #include "ScoreManager.h"
 #include "Player.h"
 #include "SoundManager.h"
+#include "GameManager.h"
 
 const int screenWidth = 600;
 const int screenHeight = 600;
@@ -87,7 +88,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 2; i++)
 						{
-							asteroidManager.SpawnAsteeroid(asteroidManager._asteroids[a].GetEntityPosition(), screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteroid(asteroidManager._asteroids[a].GetEntityPosition(), screenCenter, true, hitResult);
 						}
 
 						break;
@@ -96,7 +97,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 3; i++)
 						{
-							asteroidManager.SpawnAsteeroid(asteroidManager._asteroids[a].GetEntityPosition(), screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteroid(asteroidManager._asteroids[a].GetEntityPosition(), screenCenter, true, hitResult);
 						}
 
 						break;
@@ -127,14 +128,29 @@ void UpdateDrawFrame(void)
 	}
 
 
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime))
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime) && GameManager::Get().GetCurrentGameState() == PLAYING)
 	{
 		projectileManager.SpawnProjectile(player.GetEntityPosition(), player.GetEntityRotation(), currentTime);
 	}
 
 	if (IsKeyPressed(KEY_SPACE))
 	{
-		asteroidManager.SpawnAsteeroid(screenSize,screenCenter);
+		asteroidManager.SpawnAsteroid(screenSize,screenCenter);
+	}
+
+	if (IsKeyPressed(KEY_P))
+	{
+		GameManager::Get().GetDispatcher().trigger(GamePauseRequest{});
+	}
+
+	if (IsKeyPressed(KEY_Q))
+	{
+		GameManager::Get().GetDispatcher().trigger(StartGameRequest{});
+	}
+
+	if (IsKeyPressed(KEY_R))
+	{
+		GameManager::Get().GetDispatcher().trigger(GameRestartRequest{});
 	}
 
 	if (asteroidManager.debugMode)

@@ -24,6 +24,5 @@ class PlayerLazerProjectileManager
 	protected:
 
 		void CreateProjectile(PlayerLazerProjectile* inactiveProjectile,Vector2 spawnPosition, float spawnRotation, float creeatedTime);
-
 };
 

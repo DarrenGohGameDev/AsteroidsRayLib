@@ -15,7 +15,7 @@ class AsteroidsManager
 
 		void DrawAllAsteroids();
 
-		void SpawnAsteeroid(Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn = false, AsteroidSize asteroidSize = ASTEROIDS_SMALL);
+		void SpawnAsteroid(Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn = false, AsteroidSize asteroidSize = ASTEROIDS_SMALL);
 
 		std::vector<Asteroid>  _asteroids;
 
@@ -61,8 +61,10 @@ class AsteroidsManager
 
 #pragma endregion
 
-		void CreateAstroid(Asteroid* inactiveAsteroid,Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize);
+		void CreateAsteroid(Asteroid* inactiveAsteroid,Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize);
 
 		Vector2 GetAsteroidSpawnPosition(Vector2 screenSize, bool asteroidHitSpawn);
+
+		void OnGameReset();
 };
 

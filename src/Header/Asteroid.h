@@ -29,4 +29,6 @@ class Asteroid :public EntityTemplate
 	protected:
 
 		AsteroidSize size;
+
+		void ResetEntity() override;
 };

@@ -27,5 +27,7 @@ class PlayerLazerProjectile : public EntityTemplate
 		float projectileThicknes = 10.0f;
 
 		float projectileLength = 30.0f;
+
+		void ResetEntity() override;
 };
 

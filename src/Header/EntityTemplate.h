@@ -39,10 +39,12 @@ class EntityTemplate
 #pragma endregion
 
 	protected:
+		
+		int baseEntityHp = 3;
 
-		int entityHp = 3;
+		int entityHp;
 
-		float baseImmunityTimer = 3.0f;
+		float baseImmunityTimer = 1.0f;
 
 		float immunityTimer;
 
@@ -77,11 +79,17 @@ class EntityTemplate
 
 		void ChangeEntityState(ENTITYSTATE state);
 
+		virtual void OnEntityPause();
+
+		virtual void ResetEntity();
+
 #pragma endregion
 
 	private:
 
 		ENTITYSTATE currentEntityState = DISABLE;
+
+		ENTITYSTATE prevEntityState;
 
 		bool isChangingState = false;
 

@@ -57,3 +57,8 @@ void PlayerLazerProjectile::EntityHit()
 {
 	ChangeEntityState(DISABLE);
 }
+
+void PlayerLazerProjectile::ResetEntity()
+{
+	ChangeEntityState(DISABLE);
+}

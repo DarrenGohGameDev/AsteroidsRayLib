@@ -1,5 +1,6 @@
 #pragma once
 #include "GlobalManagerTemplate.h"
+#include "entt/entt.hpp"
 
 typedef enum GAMESTATE
 {
@@ -15,13 +16,44 @@ struct OnGameStateChange
 	GAMESTATE newState;
 };
 
+struct StartGameRequest{};
+
+struct GameEndRequest {};
+
+struct GamePauseRequest {};
+
+struct GameRestartRequest {};
+
 class GameManager : public GlobalManagerTemplate<GameManager>
 {
-public:
-	void ChangeGameState(GAMESTATE newState);
+	public:
 
-private :
+		GameManager();
 
-	GAMESTATE currentGameState;
+		entt::dispatcher& GetDispatcher() { return dispatcher; }
+
+		GAMESTATE GetCurrentGameState() { return currentGameState; }
+
+		float GetCurrentGameSpeed() { return gameSpeed; }
+
+	private :
+
+		GAMESTATE currentGameState;
+
+		GAMESTATE prevGameState;
+
+		entt::dispatcher dispatcher;
+
+		float gameSpeed = 1.0f;
+
+		void ChangeGameState(GAMESTATE newState);
+
+		void OnStartGameRequest();
+
+		void OnGameEndRequest();
+
+		void OnGamePauseRequest();
+
+		void OnGameRestartRequest();
 };
 

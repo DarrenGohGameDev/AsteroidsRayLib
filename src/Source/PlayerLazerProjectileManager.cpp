@@ -1,5 +1,6 @@
 #include "PlayerLazerProjectileManager.h"
 #include "raymath.h"
+#include "GameManager.h"
 
 PlayerLazerProjectileManager::PlayerLazerProjectileManager()
 {

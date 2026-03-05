@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "raymath.h"
 #include "SoundManager.h"
+#include "GameManager.h"
 
 Player::Player()
 {
@@ -10,6 +11,7 @@ Player::Player(Vector2 screenSize,Vector2 screenCenter)
 {
 	movement.rotation = 180;
 	movement.position = screenCenter;
+	playerSpawnPosition = screenCenter;
 	gameScreenSize = screenSize;
 	useEntityActiveTimer = false;
 	ChangeEntityState(ACTIVE);
@@ -45,7 +47,6 @@ void Player::DrawEntity()
 	if (GetCurrentEntityState() == DISABLE)
 		return;
 
-	//DrawPolyLines(movement.position, 3, 64, movement.rotation, WHITE);
 	const Rectangle source = { 0,0,32,32 };
 	Rectangle dest = { movement.position.x,movement.position.y, 48,48};
 	Vector2 origin = { dest.width / 2,dest.height / 2 };
@@ -181,4 +182,14 @@ void Player::EntityHit()
 	{
 		ChangeEntityState(INVULNERABLE);
 	}
+}
+
+void Player::ResetEntity()
+{
+	movement.rotation = 180;
+	movement.position = playerSpawnPosition;
+	ChangeEntityState(ACTIVE);
+	entityHp = baseEntityHp;
+	movement.rotationSpeed = 0;
+	movement.velocity = Vector2Zero();
 }

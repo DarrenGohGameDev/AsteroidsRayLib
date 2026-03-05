@@ -1,10 +1,14 @@
 #include "EntityTemplate.h"
 #include "raymath.h"
+#include "GameManager.h"
 
 EntityTemplate::EntityTemplate()
 {
 	currentLifeTime = baseLifeTime;
 	currentEntityState = DISABLE;
+	entityHp = baseEntityHp;
+	GameManager::Get().GetDispatcher().sink<GamePauseRequest>().connect<&EntityTemplate::OnEntityPause>(this);
+	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&EntityTemplate::ResetEntity>(this);
 }
 
 ENTITYSTATE EntityTemplate::GetCurrentEntityState()
@@ -44,6 +48,9 @@ void EntityTemplate::EntityUpdate(float deltaTime)
 void EntityTemplate::EntityLifeSpanCountdown(float deltaTime)
 {
 	if (!useEntityActiveTimer)
+		return;
+
+	if (GameManager::Get().GetCurrentGameState() == PAUSED)
 		return;
 
 	currentLifeTime -= deltaTime;
@@ -104,7 +111,7 @@ bool EntityTemplate::CheckEntityCollision(EntityTemplate* entity)
 
 	void EntityTemplate::EntityPauseStateEnter()
 	{
-		
+
 	}
 
 	void EntityTemplate::EntityDisableStateEnter()
@@ -148,6 +155,24 @@ bool EntityTemplate::CheckEntityCollision(EntityTemplate* entity)
 	}
 
 	void EntityTemplate::EntityDisableStateExit()
+	{
+
+	}
+
+	void EntityTemplate::OnEntityPause()
+	{
+		if (currentEntityState != PAUSE)
+		{
+			prevEntityState = currentEntityState;
+			ChangeEntityState(PAUSE);
+		}
+		else
+		{
+			ChangeEntityState(prevEntityState);
+		}
+	}
+
+	void EntityTemplate::ResetEntity()
 	{
 
 	}
@@ -197,3 +222,5 @@ void EntityTemplate::ChangeEntityState(ENTITYSTATE state)
 	currentEntityState = state;
 	isChangingState = false;
 }
+
+
