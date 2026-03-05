@@ -54,6 +54,8 @@ class EntityTemplate
 
 		bool useEntityActiveTimer = true;
 
+		bool debugMode = false;
+
 		Movable movement;
 
 #pragma region STATES Enter / Update / Exit function
