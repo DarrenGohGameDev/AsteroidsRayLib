@@ -14,6 +14,9 @@ ENTITYSTATE EntityTemplate::GetCurrentEntityState()
 
 void EntityTemplate::EntityUpdate(float deltaTime)
 {
+	if (GetCurrentEntityState() == DISABLE)
+		return;
+
 	if (isChangingState)
 		return;
 
