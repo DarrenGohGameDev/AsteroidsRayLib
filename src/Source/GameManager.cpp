@@ -18,7 +18,7 @@ void GameManager::ChangeGameState(GAMESTATE newState)
 
 	GAMESTATE old = currentGameState;
 	currentGameState = newState;
-
+	TraceLog(LOG_DEBUG, "Change state");
 	dispatcher.trigger(OnGameStateChange{ old, newState });
 }
 

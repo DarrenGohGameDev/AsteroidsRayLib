@@ -5,12 +5,20 @@ class ScoreManager : public GlobalManagerTemplate<ScoreManager>
 {
 public:
 
+	ScoreManager();
+
 	void UpdateScore(int amount);
 
-	void DrawScore();
+	int GetTotalScore() { return totalScore; }
+
+	int GetHighestScore();
 
 private:
 
 	int totalScore = 0;
+
+	int HighestScore = 0;
+
+	void ResetScore();
 };
 

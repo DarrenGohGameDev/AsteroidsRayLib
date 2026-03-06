@@ -1,6 +1,5 @@
 #pragma once
 #include "EntityTemplate.h"
-#include "entt/entt.hpp"
 
 class Player : public EntityTemplate
 {

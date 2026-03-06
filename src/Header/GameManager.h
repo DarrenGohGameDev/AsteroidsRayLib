@@ -1,5 +1,6 @@
 #pragma once
 #include "GlobalManagerTemplate.h"
+#include "raylib.h"
 #include "entt/entt.hpp"
 
 typedef enum GAMESTATE
@@ -27,6 +28,14 @@ struct GameRestartRequest {};
 class GameManager : public GlobalManagerTemplate<GameManager>
 {
 	public:
+
+		const float screenWidth = 600.0f;
+
+		const float screenHeight = 600.0f;
+
+		const Vector2 screenSize = { screenWidth,screenHeight };
+
+		const Vector2 screenCenter = { screenWidth / 2,screenHeight / 2 };
 
 		GameManager();
 

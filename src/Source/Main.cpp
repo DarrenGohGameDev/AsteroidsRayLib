@@ -9,17 +9,13 @@
 #include "Player.h"
 #include "SoundManager.h"
 #include "GameManager.h"
-
-const int screenWidth = 600;
-const int screenHeight = 600;
-const Vector2 screenSize = { screenWidth,screenHeight };
-const Vector2 screenCenter = { screenWidth / 2,screenHeight / 2 };
+#include "UIManager.h"
 
 AsteroidsManager asteroidManager;
 
 PlayerLazerProjectileManager projectileManager;
 
-Player player(screenSize,screenCenter);
+Player player(GameManager::Get().screenSize, GameManager::Get().screenCenter);
 
 void UpdateDrawFrame(void);
 
@@ -29,7 +25,7 @@ int main(void)
 
 	SetTraceLogLevel(LOG_DEBUG);
 
-	InitWindow(screenWidth, screenHeight,"Test");
+	InitWindow(GameManager::Get().screenWidth, GameManager::Get().screenHeight,"Test");
 
 	SoundManager::Get().LoadSfxAssets();
 	player.LoadPlayerTexture();
@@ -58,7 +54,7 @@ void UpdateDrawFrame(void)
 
 	player.EntityUpdate(deltaTime);
 
-	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, screenSize,screenCenter);
+	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, GameManager::Get().screenSize, GameManager::Get().screenCenter);
 
 	projectileManager.UpdateAllProjectile(deltaTime);
 
@@ -88,7 +84,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 2; i++)
 						{
-							asteroidManager.SpawnAsteroid(asteroidManager._asteroids[a].GetEntityPosition(), screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteroid(asteroidManager._asteroids[a].GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
 						}
 
 						break;
@@ -97,7 +93,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 3; i++)
 						{
-							asteroidManager.SpawnAsteroid(asteroidManager._asteroids[a].GetEntityPosition(), screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteroid(asteroidManager._asteroids[a].GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
 						}
 
 						break;
@@ -128,14 +124,14 @@ void UpdateDrawFrame(void)
 	}
 
 
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime) && GameManager::Get().GetCurrentGameState() == PLAYING)
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime))
 	{
 		projectileManager.SpawnProjectile(player.GetEntityPosition(), player.GetEntityRotation(), currentTime);
 	}
 
 	if (IsKeyPressed(KEY_SPACE))
 	{
-		asteroidManager.SpawnAsteroid(screenSize,screenCenter);
+		asteroidManager.SpawnAsteroid(GameManager::Get().screenSize, GameManager::Get().screenCenter);
 	}
 
 	if (IsKeyPressed(KEY_P))
@@ -166,7 +162,7 @@ void UpdateDrawFrame(void)
 
 	projectileManager.DrawAllProjectile();
 
-	ScoreManager::Get().DrawScore();
+	UIManager::Get().DrawCurrentStateUI();
 
 	EndDrawing();
 }

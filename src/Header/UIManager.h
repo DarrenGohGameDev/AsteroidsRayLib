@@ -8,9 +8,8 @@ public :
 
 	UIManager();
 
+	void DrawCurrentStateUI();
 private:
-
-	void ChangeGameUIBaseOnGameState(const OnGameStateChange& gameState);
 
 	void DrawGameMenuUI();
 
@@ -21,5 +20,7 @@ private:
 	void DrawGameOverUI();
 
 	void StopDrawingAllUI();
+
+	void DrawCenteredText(const char* text, int fontSize, Color color, Vector2 padding = {0.0f,0.0f});
 };
 

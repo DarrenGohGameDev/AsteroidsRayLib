@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -149,6 +149,7 @@
     <ClInclude Include="src\Header\PlayerLazerProjectileManager.h" />
     <ClInclude Include="src\Header\ScoreManager.h" />
     <ClInclude Include="src\Header\SoundManager.h" />
+    <ClInclude Include="src\Header\UIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Source\Asteroid.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="src\Source\PlayerLazerProjectileManager.cpp" />
     <ClCompile Include="src\Source\ScoreManager.cpp" />
     <ClCompile Include="src\Source\SoundManager.cpp" />
+    <ClCompile Include="src\Source\UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Texture\ship.png" />

@@ -1,12 +1,28 @@
 #include "ScoreManager.h"
+#include "GameManager.h"
 #include "raylib.h"
+
+ScoreManager::ScoreManager()
+{
+	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&ScoreManager::ResetScore>(this);
+}
 
 void ScoreManager::UpdateScore(int amount)
 {
 	totalScore += amount;
 }
 
-void ScoreManager::DrawScore()
+int ScoreManager::GetHighestScore()
 {
-	DrawText(TextFormat("Player Score:%d", totalScore), 300, 40, 32, WHITE);
+	if (totalScore > HighestScore)
+	{
+		HighestScore = totalScore;
+	}
+
+	return HighestScore;
+}
+
+void ScoreManager::ResetScore()
+{
+	totalScore = 0;
 }
