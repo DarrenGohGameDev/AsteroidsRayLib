@@ -3,7 +3,7 @@
 
 PlayerLazerProjectile::PlayerLazerProjectile()
 {
-
+	SetEntityRadius();
 }
 
 void PlayerLazerProjectile::Init(Vector2 spawnPosition, float spawnRotation, float creeatedTime)
@@ -48,9 +48,9 @@ void PlayerLazerProjectile::DrawEntity()
 	}
 }
 
-float PlayerLazerProjectile::GetEntityRadius()
+void PlayerLazerProjectile::SetEntityRadius()
 {
-	return projectileLength * 0.5f;
+	entityRadius = projectileLength * 0.5f;
 }
 
 void PlayerLazerProjectile::EntityHit()

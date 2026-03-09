@@ -36,10 +36,9 @@ void UIManager::SetPlayer(Player* player)
 void UIManager::DrawGameMenuUI()
 {
 	DrawCenteredText("Asteroid", 80, WHITE,{0.0f,-100.0f});
-
-	DrawText("W A S D to Move ", 40, 450, 32, WHITE);
-	DrawText("Left Click to Shoot ", 40, 500, 32, WHITE);
-	DrawText("P to PAUSE ", 40, 400, 32, WHITE);
+	DrawTutorialText();
+	
+	shootMeBtn.DrawEntity();
 }
 
 void UIManager::DrawInGameUI()
@@ -50,10 +49,10 @@ void UIManager::DrawInGameUI()
 
 void UIManager::DrawGamePauseUI()
 {
-	DrawCenteredText("PAUSE", 80, WHITE, { 0.0f,0.0f });
-	DrawCenteredText("PRESS P TO UNPAUSE", 40, WHITE, { 0.0f,80.0f });
+	DrawCenteredText("PAUSE", 80, WHITE, { 0.0f,-80.0f });
+	DrawCenteredText("PRESS P TO UNPAUSE", 40, WHITE, { 0.0f,-20.0f });
 
-	
+	DrawTutorialText();
 }
 
 void UIManager::DrawGameOverUI()
@@ -67,6 +66,13 @@ void UIManager::DrawGameOverUI()
 void UIManager::StopDrawingAllUI()
 {
 
+}
+
+void UIManager::DrawTutorialText()
+{
+	DrawText("W A S D to Move ", 40, 450, 32, WHITE);
+	DrawText("Left Click to Shoot ", 40, 500, 32, WHITE);
+	DrawText("P to PAUSE / UNPAUSE", 40, 400, 32, WHITE);
 }
 
 void UIManager::DrawCenteredText(const char* text, int fontSize, Color color, Vector2 padding)

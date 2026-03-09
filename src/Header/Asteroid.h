@@ -20,8 +20,6 @@ class Asteroid :public EntityTemplate
 
 		void DrawEntity() override;
 
-		float GetEntityRadius() override;
-
 		void EntityHit() override;
 
 		AsteroidSize AsteroidHit();
@@ -31,4 +29,6 @@ class Asteroid :public EntityTemplate
 		AsteroidSize size;
 
 		void ResetEntity() override;
+
+		void SetEntityRadius() override;
 };

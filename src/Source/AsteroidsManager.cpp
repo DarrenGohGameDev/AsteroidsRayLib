@@ -21,7 +21,6 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vec
 	spawnSpeedUpMultiplier = Clamp(spawnSpeedUpMultiplier, 1.0f, maxSpawnSpeedMultiplier);
 
 	float delay = asteroidSpawnDelay / spawnSpeedUpMultiplier;
-	TraceLog(LOG_DEBUG, "Spawn delay %f", delay);
 
 	if (currentTime > lastASteroidCreationTime + delay)
 	{

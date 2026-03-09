@@ -148,6 +148,7 @@
     <ClInclude Include="src\Header\PlayerLazerProjectile.h" />
     <ClInclude Include="src\Header\PlayerLazerProjectileManager.h" />
     <ClInclude Include="src\Header\ScoreManager.h" />
+    <ClInclude Include="src\Header\ShootMeBtnEntity.h" />
     <ClInclude Include="src\Header\SoundManager.h" />
     <ClInclude Include="src\Header\UIManager.h" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <ClCompile Include="src\Source\PlayerLazerProjectile.cpp" />
     <ClCompile Include="src\Source\PlayerLazerProjectileManager.cpp" />
     <ClCompile Include="src\Source\ScoreManager.cpp" />
+    <ClCompile Include="src\Source\ShootMeBtnEntity.cpp" />
     <ClCompile Include="src\Source\SoundManager.cpp" />
     <ClCompile Include="src\Source\UIManager.cpp" />
   </ItemGroup>

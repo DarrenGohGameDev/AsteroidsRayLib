@@ -10,11 +10,13 @@ Player::Player()
 Player::Player(Vector2 screenSize,Vector2 screenCenter)
 {
 	movement.rotation = 180;
-	movement.position = screenCenter;
-	playerSpawnPosition = screenCenter;
+	Vector2 spawnPosition = { screenCenter.x,screenCenter.y - 200.0f };
+	movement.position = spawnPosition;
+	playerSpawnPosition = spawnPosition;
 	gameScreenSize = screenSize;
 	useEntityActiveTimer = false;
 	ChangeEntityState(ACTIVE);
+	SetEntityRadius();
 }
 
 void Player::EntityActiveStateUpdate(float deltaTime)
@@ -159,9 +161,9 @@ bool Player::CanFire(float currentTime)
 	return canFire;
 }
 
-float Player::GetEntityRadius()
+void Player::SetEntityRadius()
 {
-	return playerTexture.height * 0.5f;
+	entityRadius = playerTexture.height * 0.5f;
 }
 
 void Player::EntityHit()

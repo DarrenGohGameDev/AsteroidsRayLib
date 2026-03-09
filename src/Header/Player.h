@@ -18,9 +18,7 @@ class Player : public EntityTemplate
 		void EntityInvulnerableStateExit() override;
 		
 		void LoadPlayerTexture();
-
-		float GetEntityRadius() override;
-
+		
 		bool CanFire(float currentTime);
 
 		void DrawEntity() override;
@@ -39,7 +37,11 @@ class Player : public EntityTemplate
 
 		Vector2 playerSpawnPosition;
 
+		float entityRadius = playerTexture.height * 0.5f;
+
 		void ResetEntity() override;
+
+		void SetEntityRadius() override;
 
 #pragma region PlayerMovement
 

@@ -64,6 +64,8 @@ void UpdateDrawFrame(void)
 		if (projectileManager._projectile[p].GetCurrentEntityState() == DISABLE)
 			continue;
 
+		UIManager::Get().shootMeBtn.CheckEntityCollision(&projectileManager._projectile[p]);
+
 		for (size_t a = 0; a < asteroidManager._asteroids.size(); a++)
 		{
 			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
@@ -104,7 +106,7 @@ void UpdateDrawFrame(void)
 					}
 				}
 
-				break; // projectile destroyed → stop checking this projectile
+				break;
 			}
 		}
 	}
@@ -125,7 +127,7 @@ void UpdateDrawFrame(void)
 	}
 
 
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime))
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime) && GameManager::Get().GetCurrentGameState() != PAUSED)
 	{
 		projectileManager.SpawnProjectile(player.GetEntityPosition(), player.GetEntityRotation(), currentTime);
 	}
@@ -138,11 +140,6 @@ void UpdateDrawFrame(void)
 	if (IsKeyPressed(KEY_P))
 	{
 		GameManager::Get().GetDispatcher().trigger(GamePauseRequest{});
-	}
-
-	if (IsKeyPressed(KEY_Q) && GameManager::Get().GetCurrentGameState() == MENU)
-	{
-		GameManager::Get().GetDispatcher().trigger(StartGameRequest{});
 	}
 
 	if (IsKeyPressed(KEY_R) && GameManager::Get().GetCurrentGameState() == GAMEOVER)

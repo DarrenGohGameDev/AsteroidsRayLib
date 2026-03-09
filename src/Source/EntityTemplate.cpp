@@ -7,6 +7,7 @@ EntityTemplate::EntityTemplate()
 	currentLifeTime = baseLifeTime;
 	currentEntityState = DISABLE;
 	entityHp = baseEntityHp;
+	SetEntityRadius();
 	GameManager::Get().GetDispatcher().sink<GamePauseRequest>().connect<&EntityTemplate::OnEntityPause>(this);
 	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&EntityTemplate::ResetEntity>(this);
 }
@@ -70,7 +71,12 @@ void EntityTemplate::EntityHit()
 
 float EntityTemplate::GetEntityRadius()
 {
-	return 0.0f;
+	return entityRadius;
+}
+
+void EntityTemplate::SetEntityRadius()
+{
+	
 }
 
 bool EntityTemplate::CheckEntityCollision(EntityTemplate* entity)

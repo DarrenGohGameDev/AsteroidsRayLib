@@ -16,8 +16,6 @@ class PlayerLazerProjectile : public EntityTemplate
 
 		void DrawEntity() override;
 
-		float GetEntityRadius() override;
-
 		void EntityHit() override;
 
 	protected :
@@ -27,6 +25,8 @@ class PlayerLazerProjectile : public EntityTemplate
 		float projectileThicknes = 10.0f;
 
 		float projectileLength = 30.0f;
+
+		void SetEntityRadius() override;
 
 		void ResetEntity() override;
 };

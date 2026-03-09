@@ -25,7 +25,7 @@ class EntityTemplate
 
 		virtual void EntityHit();
 
-		virtual float GetEntityRadius();
+		float GetEntityRadius();
 
 		virtual bool CheckEntityCollision(EntityTemplate * entity);
 
@@ -56,11 +56,15 @@ class EntityTemplate
 
 		float creationTime;
 
+		float entityRadius;
+
 		bool useEntityActiveTimer = true;
 
 		bool debugMode = false;
 
 		Movable movement;
+
+		virtual void SetEntityRadius();
 
 #pragma region STATES Enter / Update / Exit function
 

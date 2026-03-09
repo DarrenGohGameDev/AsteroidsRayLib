@@ -4,7 +4,6 @@
 
 Asteroid::Asteroid()
 {
-
 }
 
 void Asteroid::Init(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime)
@@ -17,6 +16,7 @@ void Asteroid::Init(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize s
 	creationTime = createdTime;
 	currentLifeTime = baseLifeTime;
 	ChangeEntityState(ACTIVE);
+	SetEntityRadius();
 }
 
 void Asteroid::EntityActiveStateUpdate(float deltaTime)
@@ -43,9 +43,9 @@ void Asteroid::DrawEntity()
 	}
 }
 
-float Asteroid::GetEntityRadius()
+void Asteroid::SetEntityRadius()
 {
-	return 16 * (int)size;
+	entityRadius =  16 * (int)size;
 }
 
 void Asteroid::EntityHit()
