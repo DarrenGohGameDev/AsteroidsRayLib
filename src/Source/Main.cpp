@@ -25,7 +25,7 @@ int main(void)
 
 	SetTraceLogLevel(LOG_DEBUG);
 
-	InitWindow(GameManager::Get().screenWidth, GameManager::Get().screenHeight,"Test");
+	InitWindow(GameManager::Get().screenWidth, GameManager::Get().screenHeight,"ASTEROIDS");
 
 	SoundManager::Get().LoadSfxAssets();
 	UIManager::Get().SetPlayer(&player);
