@@ -9,6 +9,8 @@ class Player : public EntityTemplate
 
 		Player(Vector2 screenSize ,Vector2 screenCenter);
 
+		void EntityActiveStateEnter() override;
+
 		void EntityActiveStateUpdate(float deltaTime) override;
 
 		void EntityInvulnerableStateEnter() override;
@@ -37,7 +39,9 @@ class Player : public EntityTemplate
 
 		Vector2 playerSpawnPosition;
 
-		float entityRadius = playerTexture.height * 0.5f;
+		Color playerTextureColor;
+
+		float blinkTime = 0.0f;
 
 		void ResetEntity() override;
 

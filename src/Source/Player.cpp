@@ -17,6 +17,12 @@ Player::Player(Vector2 screenSize,Vector2 screenCenter)
 	useEntityActiveTimer = false;
 	ChangeEntityState(ACTIVE);
 	SetEntityRadius();
+	playerTextureColor = WHITE;
+}
+
+void Player::EntityActiveStateEnter()
+{
+	playerTextureColor = WHITE;
 }
 
 void Player::EntityActiveStateUpdate(float deltaTime)
@@ -27,10 +33,17 @@ void Player::EntityActiveStateUpdate(float deltaTime)
 void Player::EntityInvulnerableStateEnter()
 {
 	immunityTimer = baseImmunityTimer;
+	blinkTime = 0.0f;
 }
 
 void Player::EntityInvulnerableStateUpdate(float deltaTime)
 {
+	blinkTime += deltaTime;
+	float alpha = (sinf(blinkTime * 20) + 1) / 2;
+	Color tint = WHITE;
+	tint.a = (unsigned char)(alpha * 255);
+	playerTextureColor = tint;
+
 	PlayerMovement(deltaTime);
 	immunityTimer -= deltaTime;
 	if (immunityTimer <= 0)
@@ -52,7 +65,8 @@ void Player::DrawEntity()
 	const Rectangle source = { 0,0,32,32 };
 	Rectangle dest = { movement.position.x,movement.position.y, 48,48};
 	Vector2 origin = { dest.width / 2,dest.height / 2 };
-	DrawTexturePro(playerTexture, source,dest,origin,movement.rotation + 90.0f,WHITE);
+
+	DrawTexturePro(playerTexture, source,dest,origin,movement.rotation + 90.0f, playerTextureColor);
 }
 
 void Player::WarpPlayerBackToScreen()
