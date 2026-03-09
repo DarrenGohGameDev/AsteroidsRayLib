@@ -21,7 +21,6 @@ private:
 
 	Player* playerStat;
 
-
 	void DrawGameMenuUI();
 
 	void DrawInGameUI();

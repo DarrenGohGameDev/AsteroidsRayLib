@@ -132,11 +132,6 @@ void UpdateDrawFrame(void)
 		projectileManager.SpawnProjectile(player.GetEntityPosition(), player.GetEntityRotation(), currentTime);
 	}
 
-	if (IsKeyPressed(KEY_SPACE))
-	{
-		asteroidManager.SpawnAsteroid(GameManager::Get().screenSize, GameManager::Get().screenCenter);
-	}
-
 	if (IsKeyPressed(KEY_P))
 	{
 		GameManager::Get().GetDispatcher().trigger(GamePauseRequest{});
@@ -145,6 +140,14 @@ void UpdateDrawFrame(void)
 	if (IsKeyPressed(KEY_R) && GameManager::Get().GetCurrentGameState() == GAMEOVER)
 	{
 		GameManager::Get().GetDispatcher().trigger(GameRestartRequest{});
+	}
+
+	if (GameManager::Get().InDebugMode())
+	{
+		if (IsKeyPressed(KEY_SPACE))
+		{
+			asteroidManager.SpawnAsteroid(GameManager::Get().screenSize, GameManager::Get().screenCenter);
+		}
 	}
 
 	if (asteroidManager.debugMode)
