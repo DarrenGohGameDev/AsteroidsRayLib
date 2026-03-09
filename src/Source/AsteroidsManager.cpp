@@ -6,13 +6,24 @@ AsteroidsManager::AsteroidsManager()
 {
 	_asteroids.resize(initialAsteroidsSpawnAmount);
 	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&AsteroidsManager::OnGameReset>(this);
+	OnGameReset();
 }
 
 void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vector2 screenSize,Vector2 screenCenter)
 {
+	if (GameManager::Get().GetCurrentGameState() != PLAYING)
+		return;
+
 	int totalActiveAsteroids = 0;
 
-	if (currentTime > lastASteroidCreationTime + asteroidSpawnDelay)
+	spawnSpeedUpMultiplier += deltaTime * spawnSpeedRamp;
+
+	spawnSpeedUpMultiplier = Clamp(spawnSpeedUpMultiplier, 1.0f, maxSpawnSpeedMultiplier);
+
+	float delay = asteroidSpawnDelay / spawnSpeedUpMultiplier;
+	TraceLog(LOG_DEBUG, "Spawn delay %f", delay);
+
+	if (currentTime > lastASteroidCreationTime + delay)
 	{
 		SpawnAsteroid(screenSize, screenCenter);
 		lastASteroidCreationTime = currentTime;
@@ -169,6 +180,8 @@ Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize,bool aster
 void AsteroidsManager::OnGameReset()
 {
 	lastASteroidCreationTime = -1;
+	spawnSpeedUpMultiplier = baseSpawnSpeedUpMultiplier;
+	spawnSpeedRamp = baseSpawnSpeedRamp;
 }
 
 void AsteroidsManager::DrawDebugLine()

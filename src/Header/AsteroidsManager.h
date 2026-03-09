@@ -53,7 +53,17 @@ class AsteroidsManager
 
 		const float asteroidRandomAngle = 30 * DEG2RAD;
 
-		const float asteroidSpawnDelay = 5.25f;
+		const float asteroidSpawnDelay = 5.0f;
+
+		float baseSpawnSpeedUpMultiplier = 1.0f;
+
+		float spawnSpeedUpMultiplier;
+
+		float maxSpawnSpeedMultiplier = 10.0f;
+
+		float baseSpawnSpeedRamp = 0.15f;
+
+		float spawnSpeedRamp;
 
 		const Vector2 asteroidSpawnPadding = { 20,20 };
 

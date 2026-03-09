@@ -140,12 +140,12 @@ void UpdateDrawFrame(void)
 		GameManager::Get().GetDispatcher().trigger(GamePauseRequest{});
 	}
 
-	if (IsKeyPressed(KEY_Q))
+	if (IsKeyPressed(KEY_Q) && GameManager::Get().GetCurrentGameState() == MENU)
 	{
 		GameManager::Get().GetDispatcher().trigger(StartGameRequest{});
 	}
 
-	if (IsKeyPressed(KEY_R))
+	if (IsKeyPressed(KEY_R) && GameManager::Get().GetCurrentGameState() == GAMEOVER)
 	{
 		GameManager::Get().GetDispatcher().trigger(GameRestartRequest{});
 	}
