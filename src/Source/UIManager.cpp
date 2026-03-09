@@ -28,6 +28,11 @@ void UIManager::DrawCurrentStateUI()
 	}
 }
 
+void UIManager::SetPlayer(Player* player)
+{
+	playerStat = player;
+}
+
 void UIManager::DrawGameMenuUI()
 {
 	DrawCenteredText("Asteroid", 80, WHITE,{0.0f,-100.0f});
@@ -39,6 +44,7 @@ void UIManager::DrawGameMenuUI()
 
 void UIManager::DrawInGameUI()
 {
+	DrawText(TextFormat("Player HP:%d", playerStat->GetEntityHp()), 40, 40, 32, WHITE);
 	DrawText(TextFormat("Player Score:%d", ScoreManager::Get().GetTotalScore()), 300, 40, 32, WHITE);
 }
 
@@ -46,6 +52,8 @@ void UIManager::DrawGamePauseUI()
 {
 	DrawCenteredText("PAUSE", 80, WHITE, { 0.0f,0.0f });
 	DrawCenteredText("PRESS P TO UNPAUSE", 40, WHITE, { 0.0f,80.0f });
+
+	
 }
 
 void UIManager::DrawGameOverUI()

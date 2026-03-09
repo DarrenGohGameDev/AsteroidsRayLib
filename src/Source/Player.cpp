@@ -51,8 +51,6 @@ void Player::DrawEntity()
 	Rectangle dest = { movement.position.x,movement.position.y, 48,48};
 	Vector2 origin = { dest.width / 2,dest.height / 2 };
 	DrawTexturePro(playerTexture, source,dest,origin,movement.rotation + 90.0f,WHITE);
-
-	DrawText(TextFormat("Player HP:%d", entityHp), 40, 40, 32, WHITE);
 }
 
 void Player::WarpPlayerBackToScreen()

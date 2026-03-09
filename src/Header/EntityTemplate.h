@@ -29,6 +29,8 @@ class EntityTemplate
 
 		virtual bool CheckEntityCollision(EntityTemplate * entity);
 
+		int GetEntityHp() { return entityHp; }
+
 #pragma region MovementGetter function
 
 		float GetEntityRotation() { return movement.rotation; }
