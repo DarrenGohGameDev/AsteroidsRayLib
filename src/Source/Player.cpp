@@ -5,6 +5,7 @@
 
 Player::Player()
 {
+
 }
 
 Player::Player(Vector2 screenSize,Vector2 screenCenter)
@@ -120,7 +121,7 @@ void Player::PlayerMovement(float deltaTime)
 
 	movement.rotation = angle;
 
-	PlaySound(SoundManager::Get().playerMove);
+	//PlaySound(SoundManager::Get().playerMove);
 
 	if (Vector2Length(playerMovement) > 0.0f)
 	{
@@ -197,6 +198,14 @@ void Player::EntityHit()
 	{
 		ChangeEntityState(INVULNERABLE);
 	}
+}
+
+void Player::ShootLazer(float currentTime)
+{
+	if (GetCurrentEntityState() == DISABLE || GetCurrentEntityState() == PAUSE)
+		return;
+
+	projectileManager.SpawnProjectile(GetEntityPosition(), GetEntityRotation(), currentTime);
 }
 
 void Player::ResetEntity()

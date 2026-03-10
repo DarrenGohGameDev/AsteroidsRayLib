@@ -1,11 +1,14 @@
 #pragma once
 #include "EntityTemplate.h"
+#include "PlayerLazerProjectileManager.h"
 
 class Player : public EntityTemplate
 {
 	public:
 
 		Player();
+
+		PlayerLazerProjectileManager projectileManager;
 
 		Player(Vector2 screenSize ,Vector2 screenCenter);
 
@@ -26,6 +29,8 @@ class Player : public EntityTemplate
 		void DrawEntity() override;
 
 		void EntityHit() override;
+
+		void ShootLazer(float currentTime);
 
 	protected:
 

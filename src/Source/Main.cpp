@@ -13,8 +13,6 @@
 
 AsteroidsManager asteroidManager;
 
-PlayerLazerProjectileManager projectileManager;
-
 Player player(GameManager::Get().screenSize, GameManager::Get().screenCenter);
 
 void UpdateDrawFrame(void);
@@ -23,7 +21,10 @@ int main(void)
 {
 	srand(time(0));
 
-	SetTraceLogLevel(LOG_DEBUG);
+	if (GameManager::Get().InDebugMode())
+	{
+		SetTraceLogLevel(LOG_DEBUG);
+	}
 
 	InitWindow(GameManager::Get().screenWidth, GameManager::Get().screenHeight,"ASTEROIDS");
 
@@ -57,21 +58,21 @@ void UpdateDrawFrame(void)
 
 	asteroidManager.UpdateAllAsteroids(deltaTime, currentTime, GameManager::Get().screenSize, GameManager::Get().screenCenter);
 
-	projectileManager.UpdateAllProjectile(deltaTime);
+	player.projectileManager.UpdateAllProjectile(deltaTime);
 
-	for (size_t p = 0; p < projectileManager._projectile.size(); p++)
+	for (size_t p = 0; p < player.projectileManager._projectile.size(); p++)
 	{
-		if (projectileManager._projectile[p].GetCurrentEntityState() == DISABLE)
+		if (player.projectileManager._projectile[p].GetCurrentEntityState() == DISABLE)
 			continue;
 
-		UIManager::Get().shootMeBtn.CheckEntityCollision(&projectileManager._projectile[p]);
+		UIManager::Get().shootMeBtn.CheckEntityCollision(&player.projectileManager._projectile[p]);
 
 		for (size_t a = 0; a < asteroidManager._asteroids.size(); a++)
 		{
 			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
 				continue;
 
-			if (projectileManager._projectile[p].CheckEntityCollision(&asteroidManager._asteroids[a]))
+			if (player.projectileManager._projectile[p].CheckEntityCollision(&asteroidManager._asteroids[a]))
 			{
 				ScoreManager::Get().UpdateScore(1);
 
@@ -126,13 +127,12 @@ void UpdateDrawFrame(void)
 		}
 	}
 
-
 	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.CanFire(currentTime) && GameManager::Get().GetCurrentGameState() != PAUSED)
 	{
-		projectileManager.SpawnProjectile(player.GetEntityPosition(), player.GetEntityRotation(), currentTime);
+		player.ShootLazer(currentTime);
 	}
 
-	if (IsKeyPressed(KEY_P))
+	if (IsKeyPressed(KEY_P) && GameManager::Get().GetCurrentGameState() != GAMEOVER)
 	{
 		GameManager::Get().GetDispatcher().trigger(GamePauseRequest{});
 	}
@@ -161,7 +161,7 @@ void UpdateDrawFrame(void)
 
 	asteroidManager.DrawAllAsteroids();
 
-	projectileManager.DrawAllProjectile();
+	player.projectileManager.DrawAllProjectile();
 
 	UIManager::Get().DrawCurrentStateUI();
 

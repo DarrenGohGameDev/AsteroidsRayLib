@@ -8,7 +8,7 @@ EntityTemplate::EntityTemplate()
 	currentEntityState = DISABLE;
 	entityHp = baseEntityHp;
 	SetEntityRadius();
-	GameManager::Get().GetDispatcher().sink<GamePauseRequest>().connect<&EntityTemplate::OnEntityPause>(this);
+	GameManager::Get().GetDispatcher().sink<OnGameStateChange>().connect<&EntityTemplate::OnGameManagerStateChange>(this);
 	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&EntityTemplate::ResetEntity>(this);
 }
 
@@ -25,25 +25,28 @@ void EntityTemplate::EntityUpdate(float deltaTime)
 	if (isChangingState)
 		return;
 
+	float gameSpeed = GameManager::Get().GetCurrentGameSpeed();
+	float dt = deltaTime * gameSpeed;
+
 	switch (currentEntityState)
 	{
 		case ACTIVE:
-			EntityActiveStateUpdate(deltaTime);
+			EntityActiveStateUpdate(dt);
 			break;
 		case INVULNERABLE:
-			EntityInvulnerableStateUpdate(deltaTime);
+			EntityInvulnerableStateUpdate(dt);
 			break;
 		case PAUSE:
-			EntityPauseStateUpdate(deltaTime);
+			EntityPauseStateUpdate(dt);
 			break;
 		case DISABLE:
-			EntityDisableStateUpdate(deltaTime);
+			EntityDisableStateUpdate(dt);
 			break;
 		default:
 			break;
 	}
 
-	EntityLifeSpanCountdown(deltaTime);
+	EntityLifeSpanCountdown(dt);
 }
 
 void EntityTemplate::EntityLifeSpanCountdown(float deltaTime)
@@ -165,16 +168,25 @@ bool EntityTemplate::CheckEntityCollision(EntityTemplate* entity)
 
 	}
 
-	void EntityTemplate::OnEntityPause()
+	void EntityTemplate::OnGameManagerStateChange(const OnGameStateChange& state)
 	{
-		if (currentEntityState != PAUSE)
+		if (currentEntityState == DISABLE)
+			return;
+
+		if (state.newState == PAUSED)
 		{
-			prevEntityState = currentEntityState;
-			ChangeEntityState(PAUSE);
+			if (currentEntityState != PAUSE)
+			{
+				prevEntityState = currentEntityState;
+				ChangeEntityState(PAUSE);
+			}
 		}
 		else
 		{
-			ChangeEntityState(prevEntityState);
+			if (currentEntityState == PAUSE)
+			{
+				ChangeEntityState(prevEntityState);
+			}
 		}
 	}
 

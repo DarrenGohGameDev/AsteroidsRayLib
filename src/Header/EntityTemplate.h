@@ -1,5 +1,6 @@
 #pragma once
 #include "Movable.h"
+#include "GameManager.h"
 
 typedef enum ENTITYSTATE
 {
@@ -85,7 +86,7 @@ class EntityTemplate
 
 		void ChangeEntityState(ENTITYSTATE state);
 
-		virtual void OnEntityPause();
+		void OnGameManagerStateChange(const OnGameStateChange& state);
 
 		virtual void ResetEntity();
 

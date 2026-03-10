@@ -57,6 +57,8 @@ class GameManager : public GlobalManagerTemplate<GameManager>
 
 		float gameSpeed = 1.0f;
 
+		bool isChangingState = false;
+
 		void ChangeGameState(GAMESTATE newState);
 
 		void OnStartGameRequest();

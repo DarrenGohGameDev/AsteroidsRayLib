@@ -16,10 +16,37 @@ void GameManager::ChangeGameState(GAMESTATE newState)
 	if (currentGameState == newState)
 		return;
 
+	if (isChangingState)
+		return;
+
+	isChangingState = true;
+
 	GAMESTATE old = currentGameState;
 	currentGameState = newState;
-	TraceLog(LOG_DEBUG, "Change state");
+
+	gameSpeed = (newState == PAUSED) ? 0.0f : 1.0f;
+
+	if (InDebugMode())
+	{
+		switch (newState)
+		{
+		case MENU:
+			TraceLog(LOG_DEBUG, "Change game state to menu");
+			break;
+		case PLAYING:
+			TraceLog(LOG_DEBUG, "Change game state to playing");
+			break;
+		case PAUSED:
+			TraceLog(LOG_DEBUG, "Change game state to paused");
+			break;
+		case GAMEOVER:
+			TraceLog(LOG_DEBUG, "Change game state to game over");
+			break;
+		}
+	}
+
 	dispatcher.trigger(OnGameStateChange{ old, newState });
+	isChangingState = false;
 }
 
 void GameManager::OnStartGameRequest()
@@ -33,19 +60,16 @@ void GameManager::OnGamePauseRequest()
 	{
 		prevGameState = currentGameState;
 		ChangeGameState(PAUSED);
-		gameSpeed = 0.0f;
 	}
 	else
 	{
 		ChangeGameState(prevGameState);
-		gameSpeed = 1.0f;
 	}
 	
 }
 
 void GameManager::OnGameRestartRequest()
 {
-	TraceLog(LOG_DEBUG, "restart game");
 	ChangeGameState(PLAYING);
 }
 
