@@ -170,7 +170,6 @@ bool Player::CanFire(float currentTime)
 	{
 		canFire = true;
 		lastFireTime = currentTime;
-		PlaySound(SoundManager::Get().playerShoot);
 	}
 
 	return canFire;
@@ -205,6 +204,7 @@ void Player::ShootLazer(float currentTime)
 	if (GetCurrentEntityState() == DISABLE || GetCurrentEntityState() == PAUSE)
 		return;
 
+	PlaySound(SoundManager::Get().playerShoot);
 	projectileManager.SpawnProjectile(GetEntityPosition(), GetEntityRotation(), currentTime);
 }
 

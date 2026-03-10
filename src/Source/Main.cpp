@@ -1,4 +1,8 @@
-﻿#include "raylib.h"
+﻿#define _CRT_SECURE_NO_WARNINGS
+#define RAYGUI_IMPLEMENTATION
+
+#include "raylib.h"
+#include "raygui.h"
 #include "time.h"
 #include "stdlib.h"
 #include "raymath.h"
@@ -163,7 +167,7 @@ void UpdateDrawFrame(void)
 
 	player.projectileManager.DrawAllProjectile();
 
-	UIManager::Get().DrawCurrentStateUI();
+	UIManager::Get().DrawCurrentGameStateUI();
 
 	EndDrawing();
 }

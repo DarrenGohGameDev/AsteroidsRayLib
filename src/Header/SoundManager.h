@@ -8,6 +8,14 @@ public :
 
 	void LoadSfxAssets();
 
+	float GetSfxVolume() { return sfxVolume; }
+	float GetBgmVolume() { return bgmVolume; }
+
+	void SetSfxVolume(float value);
+	void SetBgmVolume(float value);
+
+	void PlaySfx(Sound sfx);
+
 	Sound playerShoot;
 	Sound playerHit;
 	Sound playerDeath;
@@ -16,5 +24,10 @@ public :
 	Sound AsteroidHit;
 
 	Music BGM;
+
+private :
+
+	float sfxVolume = 1.0f;
+	float bgmVolume = 1.0f;
 };
 
