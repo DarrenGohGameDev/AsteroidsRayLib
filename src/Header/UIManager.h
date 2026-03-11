@@ -24,6 +24,10 @@ private:
 
 	float bgmSliderValue = 1.0f;
 
+	float lastTestSfxPlayed = 0.0f;
+
+	float prevSfxVolume = 0.0f;
+
 	void DrawGameMenuUI();
 
 	void DrawInGameUI();

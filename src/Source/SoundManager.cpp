@@ -9,16 +9,22 @@ void SoundManager::LoadSfxAssets()
 	playerMove = LoadSound("Assets/Sound/CoinCollect.ogg");
 	AsteroidHit = LoadSound("Assets/Sound/CoinCollect.ogg");
 	BGM = LoadMusicStream("Assets/Sound/BGM.ogg");
+
+	allSfx.push_back(playerShoot);
+	allSfx.push_back(playerHit);
+	allSfx.push_back(playerDeath);
+	allSfx.push_back(playerMove);
+	allSfx.push_back(AsteroidHit);
 }
 
 void SoundManager::SetSfxVolume(float value)
 {
 	sfxVolume = value;
-	SetSoundVolume(playerShoot, sfxVolume);
-	SetSoundVolume(playerHit, sfxVolume);
-	SetSoundVolume(playerDeath, sfxVolume);
-	SetSoundVolume(playerMove, sfxVolume);
-	SetSoundVolume(AsteroidHit, sfxVolume);
+
+	for (size_t i = 0; i < allSfx.size(); i++)
+	{
+		SetSoundVolume(allSfx[i], sfxVolume);
+	}
 }
 
 void SoundManager::SetBgmVolume(float value)
@@ -27,8 +33,8 @@ void SoundManager::SetBgmVolume(float value)
 	SetMusicVolume(BGM,bgmVolume);
 }
 
-void SoundManager::PlaySfx(Sound sfx)
+void SoundManager::PlayRandomSfx()
 {
-	SetSoundVolume(sfx, sfxVolume);
-	PlaySound(sfx);
+	int index = GetRandomValue(0, allSfx.size() - 1);
+	PlaySound(allSfx[index]);
 }

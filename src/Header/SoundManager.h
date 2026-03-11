@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "GlobalManagerTemplate.h"
+#include <vector>
 
 class SoundManager : public GlobalManagerTemplate<SoundManager>
 {
@@ -14,7 +15,9 @@ public :
 	void SetSfxVolume(float value);
 	void SetBgmVolume(float value);
 
-	void PlaySfx(Sound sfx);
+	void PlayRandomSfx();
+
+	std::vector<Sound> allSfx;
 
 	Sound playerShoot;
 	Sound playerHit;

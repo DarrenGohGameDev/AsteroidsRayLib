@@ -69,7 +69,7 @@ void UIManager::DrawTutorialText()
 {
 	DrawText("W A S D to Move ", 40, 450, 32, WHITE);
 	DrawText("Left Click to Shoot ", 40, 500, 32, WHITE);
-	DrawText("P to PAUSE / UNPAUSE", 40, 400, 32, WHITE);
+	DrawText("P to PAUSE / UNPAUSE & SETTINGS", 40, 400, 32, WHITE);
 }
 
 void UIManager::DrawSettingUI()
@@ -78,12 +78,20 @@ void UIManager::DrawSettingUI()
 	float sliderHeight = 20.0f;
 	float sliderXpos = GameManager::Get().screenCenter.x - sliderWidth / 2;
 	float sliderYpose = GameManager::Get().screenCenter.y - sliderHeight / 2;
+	
+	prevSfxVolume = sfxSliderValue;
 
 	DrawSliderWithPaddingAndCustomText(sliderWidth, sliderHeight, sliderXpos, sliderYpose + 20, &sfxSliderValue, 0.0f, 1.0f, "Sfx Volume", 15,{10.0f, 2.0f}, { 10.0f, 2.0f }, WHITE, WHITE);
 	DrawSliderWithPaddingAndCustomText(sliderWidth, sliderHeight, sliderXpos, sliderYpose + 50, &bgmSliderValue, 0.0f, 1.0f, "Bgm Volume", 15,{10.0f, 2.0f}, { 10.0f, 2.0f }, WHITE, WHITE);
 
 	SoundManager::Get().SetSfxVolume(sfxSliderValue);
 	SoundManager::Get().SetBgmVolume(bgmSliderValue);
+
+	if (sfxSliderValue != prevSfxVolume && GetTime() > lastTestSfxPlayed + 0.5f)
+	{
+		SoundManager::Get().PlayRandomSfx();
+		lastTestSfxPlayed = GetTime();
+	}
 }
 
 void UIManager::DrawSliderWithPaddingAndCustomText(float sliderWidth, float sliderHeight, float sliderXpos, float sliderYpose, float* value, float sliderMinValue, float sliderMaxValue, const char* labelText,int fontSize, Vector2 labelTextPadding, Vector2 displayTextPadding, Color labelTextColor, Color displayTextColor)
