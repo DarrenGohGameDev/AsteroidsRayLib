@@ -1,4 +1,5 @@
 #include "SoundManager.h"
+#include "SaveManager.h"
 
 void SoundManager::LoadSfxAssets()
 {
@@ -13,6 +14,9 @@ void SoundManager::LoadSfxAssets()
 	allSfx.push_back(playerHit);
 	allSfx.push_back(playerDeath);
 	allSfx.push_back(AsteroidHit);
+
+	sfxVolume = SaveManager::Get().GetSaveData().sfxVolume;
+	bgmVolume = SaveManager::Get().GetSaveData().bgmVolume;
 }
 
 void SoundManager::SetSfxVolume(float value)
@@ -23,12 +27,14 @@ void SoundManager::SetSfxVolume(float value)
 	{
 		SetSoundVolume(allSfx[i], sfxVolume);
 	}
+	SaveManager::Get().SavePlayerSfxVolumeSettings(sfxVolume);
 }
 
 void SoundManager::SetBgmVolume(float value)
 {
 	bgmVolume = value;
 	SetMusicVolume(BGM,bgmVolume);
+	SaveManager::Get().SavePlayerBgmVolumeSettings(bgmVolume);
 }
 
 void SoundManager::PlayRandomSfx()

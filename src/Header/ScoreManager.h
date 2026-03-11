@@ -19,12 +19,8 @@ private:
 
 	int HighestScore = 0;
 
-	void ResetScore();
-
 	void Init();
 
-	void LoadHighScore();
-
-	void SaveHighScore();
+	void ResetScore();
 };
 

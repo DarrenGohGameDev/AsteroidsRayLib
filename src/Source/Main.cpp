@@ -14,6 +14,7 @@
 #include "SoundManager.h"
 #include "GameManager.h"
 #include "UIManager.h"
+#include "SaveManager.h"
 
 AsteroidsManager asteroidManager;
 
@@ -29,6 +30,8 @@ int main(void)
 	{
 		SetTraceLogLevel(LOG_DEBUG);
 	}
+
+	SaveManager::Get().LoadSaveData();
 
 	InitWindow(GameManager::Get().screenWidth, GameManager::Get().screenHeight,"ASTEROIDS");
 

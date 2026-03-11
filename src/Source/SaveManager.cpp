@@ -1,11 +1,6 @@
 #include "SaveManager.h"
 #include <fstream>
 
-SaveManager::SaveManager()
-{
-	LoadSaveData();
-}
-
 void SaveManager::UpdateSaveData()
 {
 	SaveData data;
@@ -38,4 +33,22 @@ void SaveManager::LoadSaveData()
 		saveData.sfxVolume = data.sfxVolume;
 		saveData.bgmVolume = data.bgmVolume;
 	}
+}
+
+void SaveManager::SavePlayerHighscore(int score)
+{
+	saveData.highestScore = score;
+	UpdateSaveData();
+}
+
+void SaveManager::SavePlayerSfxVolumeSettings(float sfx)
+{
+	saveData.sfxVolume = sfx;
+	UpdateSaveData();
+}
+
+void SaveManager::SavePlayerBgmVolumeSettings(float bgm)
+{
+	saveData.bgmVolume = bgm;
+	UpdateSaveData();
 }
