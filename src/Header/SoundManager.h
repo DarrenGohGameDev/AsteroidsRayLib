@@ -22,8 +22,6 @@ public :
 	Sound playerShoot;
 	Sound playerHit;
 	Sound playerDeath;
-	Sound playerMove;
-	
 	Sound AsteroidHit;
 
 	Music BGM;

@@ -3,17 +3,15 @@
 void SoundManager::LoadSfxAssets()
 {
 	InitAudioDevice();
-	playerShoot = LoadSound("Assets/Sound/CoinCollect.ogg");
-	playerHit = LoadSound("Assets/Sound/CoinCollect.ogg");
-	playerDeath = LoadSound("Assets/Sound/CoinCollect.ogg");
-	playerMove = LoadSound("Assets/Sound/CoinCollect.ogg");
-	AsteroidHit = LoadSound("Assets/Sound/CoinCollect.ogg");
+	playerShoot = LoadSound("Assets/Sound/laserLarge_000.ogg");
+	playerHit = LoadSound("Assets/Sound/explosionCrunch_000.ogg");
+	playerDeath = LoadSound("Assets/Sound/explosionCrunch_001.ogg");
+	AsteroidHit = LoadSound("Assets/Sound/rumble1.ogg");
 	BGM = LoadMusicStream("Assets/Sound/BGM.ogg");
 
 	allSfx.push_back(playerShoot);
 	allSfx.push_back(playerHit);
 	allSfx.push_back(playerDeath);
-	allSfx.push_back(playerMove);
 	allSfx.push_back(AsteroidHit);
 }
 
