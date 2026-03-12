@@ -6,7 +6,7 @@ PlayerLazerProjectile::PlayerLazerProjectile()
 	SetEntityRadius();
 }
 
-void PlayerLazerProjectile::Init(Vector2 spawnPosition, float spawnRotation, float creeatedTime)
+void PlayerLazerProjectile::Init(Vector2 spawnPosition ,float spawnRotation ,float creeatedTime)
 {
 	movement.position = spawnPosition;
 	movement.rotation = spawnRotation;
