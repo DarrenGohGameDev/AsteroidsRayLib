@@ -11,9 +11,7 @@ public:
 
 	void EntityHit() override;
 
-protected:
-
-	void SetEntityRadius() override;
+	bool CheckEntityCollision(EntityTemplate* entity) override;
 
 private:
 
@@ -26,5 +24,7 @@ private:
 	int fontSize = 20;
 
 	float fontPadding = 20.0f;
+
+	Rectangle GetEntityRect();
 };
 

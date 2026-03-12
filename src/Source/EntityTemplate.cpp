@@ -81,7 +81,10 @@ bool EntityTemplate::CheckEntityCollision(EntityTemplate* entity)
 {
 	if (!entity)
 	{
-		TraceLog(LOG_DEBUG, "Entity is null for checking collision");
+		if (GameManager::Get().InDebugMode())
+		{
+			TraceLog(LOG_DEBUG, "Entity is null for checking collision");
+		}
 		return false;
 	}
 

@@ -39,7 +39,7 @@ void PlayerLazerProjectile::DrawEntity()
 
 	DrawRectanglePro(rect, origin, movement.rotation + 90.0f, BLUE);
 
-	if (debugMode)
+	if (debugMode || GameManager::Get().InDebugMode())
 	{
 		DrawCircle(movement.position.x,
 				movement.position.y,

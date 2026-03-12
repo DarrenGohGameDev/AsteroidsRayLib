@@ -28,9 +28,43 @@ void ShootMeBtnEntity::DrawEntity()
 void ShootMeBtnEntity::EntityHit()
 {
     GameManager::Get().GetDispatcher().trigger(StartGameRequest{});
+	ChangeEntityState(DISABLE);
 }
 
-void ShootMeBtnEntity::SetEntityRadius()
+bool ShootMeBtnEntity::CheckEntityCollision(EntityTemplate* entity)
 {
-    entityRadius = btnWidth * 0.5f;
+	if (!entity)
+	{
+		if (GameManager::Get().InDebugMode())
+		{
+			TraceLog(LOG_DEBUG, "Entity is null for checking collision");
+		}
+		return false;
+	}
+
+	if (entity->GetCurrentEntityState() == DISABLE)
+		return false;
+
+	bool hit = CheckCollisionCircleRec(
+		entity->GetEntityPosition(),
+		entity->GetEntityRadius(),
+		GetEntityRect()
+	);
+
+	if (hit)
+	{
+		EntityHit();
+	}
+
+	return hit;
+}
+
+Rectangle ShootMeBtnEntity::GetEntityRect()
+{
+	return Rectangle{
+		movement.position.x - btnWidth / 2,
+		movement.position.y - btnHeight / 2,
+		btnWidth,
+		btnHeight
+	};
 }

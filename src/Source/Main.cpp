@@ -35,8 +35,12 @@ int main(void)
 
 	InitWindow(GameManager::Get().screenWidth, GameManager::Get().screenHeight,"ASTEROIDS");
 
+	SetExitKey(KEY_NULL);
+
 	SoundManager::Get().LoadSfxAssets();
+
 	UIManager::Get().SetPlayer(&player);
+
 	player.LoadPlayerTexture();
 
 	PlayMusicStream(SoundManager::Get().BGM);
@@ -108,9 +112,6 @@ void UpdateDrawFrame(void)
 						}
 
 						break;
-
-					default:
-						break;
 					}
 				}
 
@@ -157,7 +158,7 @@ void UpdateDrawFrame(void)
 		}
 	}
 
-	if (asteroidManager.debugMode)
+	if (asteroidManager.debugMode || GameManager::Get().InDebugMode())
 	{
 		asteroidManager.DrawDebugLine();
 	}

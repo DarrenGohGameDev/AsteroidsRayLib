@@ -32,7 +32,7 @@ void Asteroid::DrawEntity()
 
 	DrawPolyLines(movement.position, 3, 16*(int)(size), movement.rotation, WHITE);
 
-	if (debugMode)
+	if (debugMode || GameManager::Get().InDebugMode())
 	{
 		DrawCircleLines(
 			movement.position.x,
