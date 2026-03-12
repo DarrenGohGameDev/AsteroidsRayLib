@@ -21,7 +21,6 @@ add_executable(Asteroid WIN32
     src/Source/ShootMeBtnEntity.cpp
 )
 
-# Copy Assets folder next to the executable (Debug/Release)
 add_custom_target(copy_assets ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_SOURCE_DIR}/Assets
@@ -33,5 +32,12 @@ add_dependencies(Asteroid copy_assets)
 target_include_directories(Asteroid PRIVATE src/Header)
 
 find_package(raylib CONFIG REQUIRED)
+
+
+target_link_libraries(Asteroid PRIVATE raylib)
+
+if (WIN32)
+    target_link_options(Asteroid PRIVATE "/SUBSYSTEM:WINDOWS" "/ENTRY:mainCRTStartup")
+endif()
 
 target_link_libraries(Asteroid PRIVATE raylib)

@@ -11,9 +11,8 @@ Player::Player()
 Player::Player(Vector2 screenSize ,Vector2 screenCenter)
 {
 	movement.rotation = 180;
-	Vector2 spawnPosition = { screenCenter.x,screenCenter.y - 200.0f };
-	movement.position = spawnPosition;
-	playerSpawnPosition = spawnPosition;
+	movement.position = { screenCenter.x,screenCenter.y - 200.0f };
+	playerSpawnPosition = screenCenter;
 	gameScreenSize = screenSize;
 	useEntityActiveTimer = false;
 	ChangeEntityState(ACTIVE);
