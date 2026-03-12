@@ -26,7 +26,5 @@ private:
 	int fontSize = 20;
 
 	float fontPadding = 20.0f;
-
-
 };
 

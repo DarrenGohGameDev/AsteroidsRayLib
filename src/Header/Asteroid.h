@@ -2,7 +2,7 @@
 #include "Movable.h"
 #include "EntityTemplate.h"
 
-typedef enum AsteroidSize
+enum AsteroidSize
 {
 	ASTEROIDS_SMALL = 1,
 	ASTEROIDS_MEDIUM = 2,
@@ -14,7 +14,7 @@ class Asteroid :public EntityTemplate
 	public:
 		Asteroid();
 
-		void Init(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime);
+		void Init(Vector2 spawnPosition ,Vector2 spawnVelocity ,AsteroidSize spawnSize ,float spawnRotation ,float spawnRotationSpeed ,float createdTime);
 
 		void EntityActiveStateUpdate(float deltaTime) override;
 
@@ -22,7 +22,7 @@ class Asteroid :public EntityTemplate
 
 		void EntityHit() override;
 
-		AsteroidSize AsteroidHit();
+		const AsteroidSize& AsteroidHit();
 
 	protected:
 

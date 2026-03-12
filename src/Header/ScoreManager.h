@@ -9,17 +9,15 @@ public:
 
 	void UpdateScore(int amount);
 
-	int GetTotalScore() { return totalScore; }
+	const int& GetTotalScore() { return totalScore; }
 
-	int GetHighestScore();
+	const int& GetHighestScore();
 
 private:
 
 	int totalScore = 0;
 
 	int HighestScore = 0;
-
-	void Init();
 
 	void ResetScore();
 };

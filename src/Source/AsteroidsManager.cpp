@@ -4,12 +4,12 @@
 
 AsteroidsManager::AsteroidsManager()
 {
-	_asteroids.resize(initialAsteroidsSpawnAmount);
+	asteroids.resize(initialAsteroidsSpawnAmount);
 	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&AsteroidsManager::OnGameReset>(this);
 	OnGameReset();
 }
 
-void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vector2 screenSize,Vector2 screenCenter)
+void AsteroidsManager::UpdateAllAsteroids(float deltaTIme, float currentTime, Vector2 screenSize, Vector2 screenCenter)
 {
 	if (GameManager::Get().GetCurrentGameState() != PLAYING)
 		return;
@@ -22,52 +22,52 @@ void AsteroidsManager::UpdateAllAsteroids(float deltaTime,float currentTime, Vec
 
 	float delay = asteroidSpawnDelay / spawnSpeedUpMultiplier;
 
-	if (currentTime > lastASteroidCreationTime + delay)
+	if (currentTime > lastAsteroidCreationTime + delay)
 	{
 		SpawnAsteroid(screenSize, screenCenter);
-		lastASteroidCreationTime = currentTime;
+		lastAsteroidCreationTime = currentTime;
 	}
 
-	for (size_t i = 0; i < _asteroids.size(); i++)
+	for (int i = 0; i < asteroids.size(); i++)
 	{
-		_asteroids[i].EntityUpdate(deltaTime);
+		asteroids[i].EntityUpdate(deltaTime);
 
-		if (debugMode)
+		if (debugMode || GameManager::Get().InDebugMode())
 		{
-			if (_asteroids[i].GetCurrentEntityState() == ACTIVE)
+			if (asteroids[i].GetCurrentEntityState() == ACTIVE)
 			{
 				totalActiveAsteroids++;
 			}
 		}
 	}
 
-	if (debugMode)
+	if (debugMode || GameManager::Get().InDebugMode())
 	{
 		DrawText(TextFormat("ASTEROIDS:%d", totalActiveAsteroids), 20, 90, 32, WHITE);
-		DrawText(TextFormat("ASTEROIDS Size:%d", _asteroids.size()), 20, 140, 32, WHITE);
+		DrawText(TextFormat("ASTEROIDS Size:%d", asteroids.size()), 20, 140, 32, WHITE);
 	}
 }
 
 void AsteroidsManager::DrawAllAsteroids()
 {
-	for (size_t i = 0; i < _asteroids.size(); i++)
+	for (int i = 0; i < asteroids.size(); i++)
 	{
-		_asteroids[i].DrawEntity();
+		asteroids[i].DrawEntity();
 	}
 }
 
-void AsteroidsManager::SpawnAsteroid(Vector2 screenSize,Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize)
+void AsteroidsManager::SpawnAsteroid(Vector2 screenSize ,Vector2 screenCenter ,bool asteroidHitSpawn ,AsteroidSize asteroidSize)
 {
 	if (GameManager::Get().GetCurrentGameState() != PLAYING)
 		return;
 
 	bool reuseAsteroid = false;
 
-	for (size_t i = 0; i < _asteroids.size(); i++)
+	for (int i = 0; i < asteroids.size(); i++)
 	{
-		if (_asteroids[i].GetCurrentEntityState() != ACTIVE)
+		if (asteroids[i].GetCurrentEntityState() != ACTIVE)
 		{
-			CreateAsteroid(&_asteroids[i], screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
+			CreateAsteroid(&asteroids[i], screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
 
 			reuseAsteroid = true;
 			return;
@@ -76,14 +76,14 @@ void AsteroidsManager::SpawnAsteroid(Vector2 screenSize,Vector2 screenCenter, bo
 
 	if (!reuseAsteroid)
 	{
-		_asteroids.emplace_back();
-		CreateAsteroid(&_asteroids.back(), screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
+		asteroids.emplace_back();
+		CreateAsteroid(&asteroids.back(), screenSize, screenCenter, asteroidHitSpawn, asteroidSize);
 	}
 }
 
-void AsteroidsManager::CreateAsteroid(Asteroid* inactiveAsteroid,Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize)
+void AsteroidsManager::CreateAsteroid(Asteroid* inactiveAsteroid ,Vector2 screenSize ,Vector2 screenCenter ,bool asteroidHitSpawn ,AsteroidSize asteroidSize)
 {
-	AsteroidSize newAsteroidSize = _asteroidsSize[GetRandomValue(0, 2)];
+	AsteroidSize newAsteroidSize = asteroidsSize[GetRandomValue(0, 2)];
 
 	float newAsteroidSpeed = GetRandomValue(asteroidMoveSpeedMin, asteroidMoveSpeedMax);
 
@@ -119,7 +119,7 @@ void AsteroidsManager::CreateAsteroid(Asteroid* inactiveAsteroid,Vector2 screenS
 
 	newAsteroidVelocity = Vector2Scale(Vector2Normalize(newAsteroidVelocity), newAsteroidSpeed);
 
-	if (debugMode)
+	if (debugMode || GameManager::Get().InDebugMode())
 	{
 		asteroidDebugSpawnLine0[0] = newAsteroidSpawnPosition;
 		asteroidDebugSpawnLine1[0] = newAsteroidSpawnPosition;
@@ -131,7 +131,7 @@ void AsteroidsManager::CreateAsteroid(Asteroid* inactiveAsteroid,Vector2 screenS
 
 	newAsteroidVelocity = Vector2Rotate(newAsteroidVelocity, (float)GetRandomValue(-asteroidRandomAngle, asteroidRandomAngle));
 
-	if (debugMode)
+	if (debugMode || GameManager::Get().InDebugMode())
 	{
 		asteroidDebugSpawnLine2[1] = Vector2Add(newAsteroidSpawnPosition, Vector2Scale(newAsteroidVelocity, 10));
 	}
@@ -139,7 +139,7 @@ void AsteroidsManager::CreateAsteroid(Asteroid* inactiveAsteroid,Vector2 screenS
 	inactiveAsteroid->Init(newAsteroidSpawnPosition, newAsteroidVelocity, newAsteroidSize, GetRandomValue(asteroidSpawnRotationMin, asteroidSpawnRotationMax), GetRandomValue(asteroidRotSpeedMin, asteroidRotSpeedMax), GetTime());
 }
 
-Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize,bool asteroidHitSpawn)
+Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize ,bool asteroidHitSpawn)
 {
 	Vector2 result;
 
@@ -178,7 +178,7 @@ Vector2 AsteroidsManager::GetAsteroidSpawnPosition(Vector2 screenSize,bool aster
 
 void AsteroidsManager::OnGameReset()
 {
-	lastASteroidCreationTime = -1;
+	lastAsteroidCreationTime = -1;
 	spawnSpeedUpMultiplier = baseSpawnSpeedUpMultiplier;
 	spawnSpeedRamp = baseSpawnSpeedRamp;
 }

@@ -6,7 +6,8 @@
 
 UIManager::UIManager()
 {
-
+	sfxSliderValue = SoundManager::Get().GetSfxVolume();
+	bgmSliderValue = SoundManager::Get().GetBgmVolume();
 }
 
 void UIManager::DrawCurrentGameStateUI()
@@ -67,9 +68,10 @@ void UIManager::DrawGameOverUI()
 
 void UIManager::DrawTutorialText()
 {
-	DrawText("W A S D to Move ", 40, 450, 32, WHITE);
+	DrawText("W A S D to Move ", 40, 400, 32, WHITE);
+	DrawText("Mouse to Aim ", 40, 450, 32, WHITE);
 	DrawText("Left Click to Shoot ", 40, 500, 32, WHITE);
-	DrawText("P to PAUSE / UNPAUSE & SETTINGS", 40, 400, 32, WHITE);
+	DrawText("P to PAUSE & SETTINGS", 40, 550, 32, WHITE);
 }
 
 void UIManager::DrawSettingUI()
@@ -94,7 +96,7 @@ void UIManager::DrawSettingUI()
 	}
 }
 
-void UIManager::DrawSliderWithPaddingAndCustomText(float sliderWidth, float sliderHeight, float sliderXpos, float sliderYpose, float* value, float sliderMinValue, float sliderMaxValue, const char* labelText,int fontSize, Vector2 labelTextPadding, Vector2 displayTextPadding, Color labelTextColor, Color displayTextColor)
+void UIManager::DrawSliderWithPaddingAndCustomText(float sliderWidth, float sliderHeight, float sliderXpos, float sliderYpose, float* value, float sliderMinValue, float sliderMaxValue, const char* labelText, int fontSize, Vector2 labelTextPadding, Vector2 displayTextPadding, Color labelTextColor, Color displayTextColor)
 {
 	GuiSlider(
 		Rectangle{ sliderXpos, sliderYpose, sliderWidth, sliderHeight },
@@ -112,7 +114,7 @@ void UIManager::DrawSliderWithPaddingAndCustomText(float sliderWidth, float slid
 	DrawText(TextFormat("%.2f", *value), sliderXpos + sliderWidth + displayTextPadding.x, sliderYpose + displayTextPadding.y, fontSize, displayTextColor);
 }
 
-void UIManager::DrawCenteredText(const char* text, int fontSize, Color color, Vector2 padding)
+void UIManager::DrawCenteredText(const char* text ,int fontSize , Color color ,Vector2 padding)
 {
 	int textWidth = MeasureText(text, fontSize);
 

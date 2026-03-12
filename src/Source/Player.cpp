@@ -8,7 +8,7 @@ Player::Player()
 
 }
 
-Player::Player(Vector2 screenSize,Vector2 screenCenter)
+Player::Player(Vector2 screenSize ,Vector2 screenCenter)
 {
 	movement.rotation = 180;
 	Vector2 spawnPosition = { screenCenter.x,screenCenter.y - 200.0f };
@@ -120,8 +120,6 @@ void Player::PlayerMovement(float deltaTime)
 	playerMovement.y = (int)IsKeyDown(KEY_S) - (int)IsKeyDown(KEY_W);
 
 	movement.rotation = angle;
-
-	//PlaySound(SoundManager::Get().playerMove);
 
 	if (Vector2Length(playerMovement) > 0.0f)
 	{

@@ -3,7 +3,7 @@
 #include "raylib.h"
 #include "entt/entt.hpp"
 
-typedef enum GAMESTATE
+enum GAMESTATE
 {
 	MENU = 0,
 	PLAYING = 1,
@@ -45,7 +45,7 @@ class GameManager : public GlobalManagerTemplate<GameManager>
 
 		float GetCurrentGameSpeed() { return gameSpeed; }
 
-		bool InDebugMode() { return true; }
+		bool InDebugMode() { return false; }
 
 	private :
 

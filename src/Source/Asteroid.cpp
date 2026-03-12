@@ -6,7 +6,7 @@ Asteroid::Asteroid()
 {
 }
 
-void Asteroid::Init(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed,float createdTime)
+void Asteroid::Init(Vector2 spawnPosition, Vector2 spawnVelocity, AsteroidSize spawnSize, float spawnRotation, float spawnRotationSpeed, float createdTime)
 {
 	movement.position = spawnPosition;
 	movement.rotation = spawnRotation;
@@ -53,7 +53,7 @@ void Asteroid::EntityHit()
 	ChangeEntityState(DISABLE);
 }
 
-AsteroidSize Asteroid::AsteroidHit()
+const AsteroidSize& Asteroid::AsteroidHit()
 {
 	EntityHit();
 	return size;

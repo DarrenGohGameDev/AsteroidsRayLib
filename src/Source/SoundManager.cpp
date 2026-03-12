@@ -17,6 +17,8 @@ void SoundManager::LoadSfxAssets()
 
 	sfxVolume = SaveManager::Get().GetSaveData().sfxVolume;
 	bgmVolume = SaveManager::Get().GetSaveData().bgmVolume;
+	SetBgmVolume(bgmVolume);
+	SetSfxVolume(sfxVolume);
 }
 
 void SoundManager::SetSfxVolume(float value)

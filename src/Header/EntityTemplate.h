@@ -2,7 +2,7 @@
 #include "Movable.h"
 #include "GameManager.h"
 
-typedef enum ENTITYSTATE
+enum ENTITYSTATE
 {
 	ACTIVE = 1,
 	INVULNERABLE = 0,

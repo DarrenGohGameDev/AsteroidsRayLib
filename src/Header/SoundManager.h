@@ -9,8 +9,8 @@ public :
 
 	void LoadSfxAssets();
 
-	float GetSfxVolume() { return sfxVolume; }
-	float GetBgmVolume() { return bgmVolume; }
+	const float& GetSfxVolume() { return sfxVolume; }
+	const float& GetBgmVolume() { return bgmVolume; }
 
 	void SetSfxVolume(float value);
 	void SetBgmVolume(float value);

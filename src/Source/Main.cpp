@@ -67,25 +67,25 @@ void UpdateDrawFrame(void)
 
 	player.projectileManager.UpdateAllProjectile(deltaTime);
 
-	for (size_t p = 0; p < player.projectileManager._projectile.size(); p++)
+	for (int p = 0; p < player.projectileManager._projectile.size(); p++)
 	{
 		if (player.projectileManager._projectile[p].GetCurrentEntityState() == DISABLE)
 			continue;
 
 		UIManager::Get().shootMeBtn.CheckEntityCollision(&player.projectileManager._projectile[p]);
 
-		for (size_t a = 0; a < asteroidManager._asteroids.size(); a++)
+		for (int a = 0; a < asteroidManager.asteroids.size(); a++)
 		{
-			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
+			if (asteroidManager.asteroids[a].GetCurrentEntityState() == DISABLE)
 				continue;
 
-			if (player.projectileManager._projectile[p].CheckEntityCollision(&asteroidManager._asteroids[a]))
+			if (player.projectileManager._projectile[p].CheckEntityCollision(&asteroidManager.asteroids[a]))
 			{
 				ScoreManager::Get().UpdateScore(1);
 
 				PlaySound(SoundManager::Get().AsteroidHit);
 
-				AsteroidSize hitResult = asteroidManager._asteroids[a].AsteroidHit();
+				AsteroidSize hitResult = asteroidManager.asteroids[a].AsteroidHit();
 
 				if (hitResult != ASTEROIDS_SMALL)
 				{
@@ -95,7 +95,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 2; i++)
 						{
-							asteroidManager.SpawnAsteroid(asteroidManager._asteroids[a].GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteroid(asteroidManager.asteroids[a].GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
 						}
 
 						break;
@@ -104,7 +104,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 3; i++)
 						{
-							asteroidManager.SpawnAsteroid(asteroidManager._asteroids[a].GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteroid(asteroidManager.asteroids[a].GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
 						}
 
 						break;
@@ -121,12 +121,12 @@ void UpdateDrawFrame(void)
 
 	if (player.GetCurrentEntityState() == ACTIVE)
 	{
-		for (size_t a = 0; a < asteroidManager._asteroids.size(); a++)
+		for (int a = 0; a < asteroidManager.asteroids.size(); a++)
 		{
-			if (asteroidManager._asteroids[a].GetCurrentEntityState() == DISABLE)
+			if (asteroidManager.asteroids[a].GetCurrentEntityState() == DISABLE)
 				continue;
 
-			if (player.CheckEntityCollision(&asteroidManager._asteroids[a]))
+			if (player.CheckEntityCollision(&asteroidManager.asteroids[a]))
 			{
 				PlaySound(SoundManager::Get().playerHit);
 				break;

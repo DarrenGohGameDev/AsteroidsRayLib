@@ -148,7 +148,6 @@
     <ClInclude Include="src\Header\EntityTemplate.h" />
     <ClInclude Include="src\Header\GameManager.h" />
     <ClInclude Include="src\Header\GlobalManagerTemplate.h" />
-    <ClInclude Include="src\Header\InputManager.h" />
     <ClInclude Include="src\Header\Movable.h" />
     <ClInclude Include="src\Header\Player.h" />
     <ClInclude Include="src\Header\PlayerLazerProjectile.h" />
@@ -164,7 +163,6 @@
     <ClCompile Include="src\Source\AsteroidsManager.cpp" />
     <ClCompile Include="src\Source\EntityTemplate.cpp" />
     <ClCompile Include="src\Source\GameManager.cpp" />
-    <ClCompile Include="src\Source\InputManager.cpp" />
     <ClCompile Include="src\Source\Main.cpp" />
     <ClCompile Include="src\Source\Movable.cpp" />
     <ClCompile Include="src\Source\Player.cpp" />

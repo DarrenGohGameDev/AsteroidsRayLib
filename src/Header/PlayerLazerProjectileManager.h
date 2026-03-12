@@ -15,7 +15,7 @@ class PlayerLazerProjectileManager
 
 		void UpdateAllProjectile(float deltaTIme);
 
-		void SpawnProjectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime);
+		void SpawnProjectile(Vector2 spawnPosition ,float spawnRotation ,float creeatedTime);
 
 		void DrawAllProjectile();
 
@@ -23,6 +23,6 @@ class PlayerLazerProjectileManager
 
 	protected:
 
-		void CreateProjectile(PlayerLazerProjectile* inactiveProjectile,Vector2 spawnPosition, float spawnRotation, float creeatedTime);
+		void CreateProjectile(PlayerLazerProjectile* inactiveProjectile ,Vector2 spawnPosition ,float spawnRotation ,float creeatedTime);
 };
 

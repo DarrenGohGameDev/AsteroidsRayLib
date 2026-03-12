@@ -11,15 +11,13 @@ class AsteroidsManager
 
 		AsteroidsManager();
 
-		void UpdateAllAsteroids(float deltaTIme, float currentTime, Vector2 screenSize, Vector2 screenCenter);
+		void UpdateAllAsteroids(float deltaTIme ,float currentTime ,Vector2 screenSize ,Vector2 screenCenter);
 
 		void DrawAllAsteroids();
 
-		void SpawnAsteroid(Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn = false, AsteroidSize asteroidSize = ASTEROIDS_SMALL);
+		void SpawnAsteroid(Vector2 screenSize ,Vector2 screenCenter ,bool asteroidHitSpawn = false ,AsteroidSize asteroidSize = ASTEROIDS_SMALL);
 
-		std::vector<Asteroid>  _asteroids;
-
-		AsteroidSize _asteroidsSize[3] = { ASTEROIDS_SMALL, ASTEROIDS_MEDIUM,ASTEROIDS_LARGE };
+		std::vector<Asteroid>  asteroids;
 
 #pragma region DEBUGING
 
@@ -67,13 +65,15 @@ class AsteroidsManager
 
 		const Vector2 asteroidSpawnPadding = { 20,20 };
 
-		float lastASteroidCreationTime = -1;
+		float lastAsteroidCreationTime = -1;
+
+		AsteroidSize asteroidsSize[3] = { ASTEROIDS_SMALL, ASTEROIDS_MEDIUM,ASTEROIDS_LARGE };
 
 #pragma endregion
 
-		void CreateAsteroid(Asteroid* inactiveAsteroid,Vector2 screenSize, Vector2 screenCenter, bool asteroidHitSpawn, AsteroidSize asteroidSize);
+		void CreateAsteroid(Asteroid* inactiveAsteroid ,Vector2 screenSize ,Vector2 screenCenter ,bool asteroidHitSpawn ,AsteroidSize asteroidSize);
 
-		Vector2 GetAsteroidSpawnPosition(Vector2 screenSize, bool asteroidHitSpawn);
+		Vector2 GetAsteroidSpawnPosition(Vector2 screenSize ,bool asteroidHitSpawn);
 
 		void OnGameReset();
 };

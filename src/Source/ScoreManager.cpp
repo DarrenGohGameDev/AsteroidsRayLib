@@ -7,7 +7,7 @@
 ScoreManager::ScoreManager()
 {
 	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&ScoreManager::ResetScore>(this);
-	Init();
+	HighestScore = SaveManager::Get().GetSaveData().highestScore;
 }
 
 void ScoreManager::UpdateScore(int amount)
@@ -15,7 +15,7 @@ void ScoreManager::UpdateScore(int amount)
 	totalScore += amount;
 }
 
-int ScoreManager::GetHighestScore()
+const int& ScoreManager::GetHighestScore()
 {
 	if (totalScore > HighestScore)
 	{
@@ -24,11 +24,6 @@ int ScoreManager::GetHighestScore()
 	}
 
 	return HighestScore;
-}
-
-void ScoreManager::Init()
-{
-	HighestScore = SaveManager::Get().GetSaveData().highestScore;
 }
 
 void ScoreManager::ResetScore()

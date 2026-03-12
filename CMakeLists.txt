@@ -15,6 +15,11 @@ add_executable(MyGame
     src/Source/PlayerLazerProjectile.cpp
     src/Source/PlayerLazerProjectileManager.cpp
     src/Source/ScoreManager.cpp
+    src/Source/GameManager.cpp
+    src/Source/SaveManager.cpp
+    src/Source/UIManager.cpp
+    src/Source/SoundManager.cpp
+    src/Source/ShootMeBtnEntity.cpp
 )
 
 # Copy Assets folder next to the executable (Debug/Release)

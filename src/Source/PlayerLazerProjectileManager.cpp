@@ -11,11 +11,11 @@ void PlayerLazerProjectileManager::UpdateAllProjectile(float deltaTIme)
 {
 	int totalActiveProjectile = 0;
 
-	for (size_t i = 0; i < _projectile.size(); i++)
+	for (int i = 0; i < _projectile.size(); i++)
 	{
 		_projectile[i].EntityUpdate(deltaTIme);
 
-		if (debugMode)
+		if (debugMode || GameManager::Get().InDebugMode())
 		{
 			if (_projectile[i].GetCurrentEntityState() == ACTIVE)
 			{
@@ -24,18 +24,18 @@ void PlayerLazerProjectileManager::UpdateAllProjectile(float deltaTIme)
 		}
 	}
 
-	if (debugMode)
+	if (debugMode || GameManager::Get().InDebugMode())
 	{
 		DrawText(TextFormat("projectile:%d", totalActiveProjectile), 20, 180, 32, WHITE);
 		DrawText(TextFormat("projectile Size:%d", _projectile.size()), 20, 210, 32, WHITE);
 	}
 }
 
-void PlayerLazerProjectileManager::SpawnProjectile(Vector2 spawnPosition, float spawnRotation, float creeatedTime)
+void PlayerLazerProjectileManager::SpawnProjectile(Vector2 spawnPosition ,float spawnRotation ,float creeatedTime)
 {
 	bool spawnNewProjectile = false;
 
-	for (size_t i = 0; i < _projectile.size(); i++)
+	for (int i = 0; i < _projectile.size(); i++)
 	{
 		if (_projectile[i].GetCurrentEntityState() != ACTIVE)
 		{
@@ -55,13 +55,13 @@ void PlayerLazerProjectileManager::SpawnProjectile(Vector2 spawnPosition, float 
 
 void PlayerLazerProjectileManager::DrawAllProjectile()
 {
-	for (size_t i = 0; i < _projectile.size(); i++)
+	for (int i = 0; i < _projectile.size(); i++)
 	{
 		_projectile[i].DrawEntity();
 	}
 }
 
-void PlayerLazerProjectileManager::CreateProjectile(PlayerLazerProjectile* inactiveProjectile,Vector2 spawnPosition, float spawnRotation, float creeatedTime)
+void PlayerLazerProjectileManager::CreateProjectile(PlayerLazerProjectile* inactiveProjectile ,Vector2 spawnPosition ,float spawnRotation ,float creeatedTime)
 {
 	float radians = spawnRotation * DEG2RAD;
 
