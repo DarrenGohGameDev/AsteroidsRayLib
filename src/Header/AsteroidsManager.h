@@ -11,7 +11,7 @@ class AsteroidsManager
 
 		AsteroidsManager();
 
-		void UpdateAllAsteroids(float deltaTIme ,float currentTime ,Vector2 screenSize ,Vector2 screenCenter);
+		void UpdateAllAsteroids(float deltaTime,float currentTime ,Vector2 screenSize ,Vector2 screenCenter);
 
 		void DrawAllAsteroids();
 

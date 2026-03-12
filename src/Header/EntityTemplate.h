@@ -26,18 +26,18 @@ class EntityTemplate
 
 		virtual void EntityHit();
 
-		float GetEntityRadius();
-
 		virtual bool CheckEntityCollision(EntityTemplate * entity);
 
-		int GetEntityHp() { return entityHp; }
+		const float& GetEntityRadius() { return entityRadius; }
+
+		const int& GetEntityHp() { return entityHp; }
 
 #pragma region MovementGetter function
 
-		float GetEntityRotation() { return movement.rotation; }
-		float GetEntityRotationSpeed() { return movement.rotationSpeed; }
-		Vector2 GetEntityPosition() { return movement.position; }
-		Vector2 GetEntityVelocity() { return movement.velocity; }
+		const float& GetEntityRotation() { return movement.rotation; }
+		const float& GetEntityRotationSpeed() { return movement.rotationSpeed; }
+		const Vector2& GetEntityPosition() { return movement.position; }
+		const Vector2& GetEntityVelocity() { return movement.velocity; }
 
 #pragma endregion
 

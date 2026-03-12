@@ -19,9 +19,9 @@ class PlayerLazerProjectileManager
 
 		void DrawAllProjectile();
 
-		const bool debugMode = false;
-
 	protected:
+
+		const bool debugMode = false;
 
 		void CreateProjectile(PlayerLazerProjectile* inactiveProjectile ,Vector2 spawnPosition ,float spawnRotation ,float creeatedTime);
 };

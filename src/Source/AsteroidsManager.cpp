@@ -9,7 +9,7 @@ AsteroidsManager::AsteroidsManager()
 	OnGameReset();
 }
 
-void AsteroidsManager::UpdateAllAsteroids(float deltaTIme, float currentTime, Vector2 screenSize, Vector2 screenCenter)
+void AsteroidsManager::UpdateAllAsteroids(float deltaTime, float currentTime, Vector2 screenSize, Vector2 screenCenter)
 {
 	if (GameManager::Get().GetCurrentGameState() != PLAYING)
 		return;

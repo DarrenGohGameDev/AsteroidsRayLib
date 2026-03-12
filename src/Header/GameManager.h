@@ -43,9 +43,9 @@ class GameManager : public GlobalManagerTemplate<GameManager>
 
 		GAMESTATE GetCurrentGameState() { return currentGameState; }
 
-		float GetCurrentGameSpeed() { return gameSpeed; }
+		const float& GetCurrentGameSpeed() { return gameSpeed; }
 
-		bool InDebugMode() { return false; }
+		const bool& InDebugMode() { return false; }
 
 	private :
 

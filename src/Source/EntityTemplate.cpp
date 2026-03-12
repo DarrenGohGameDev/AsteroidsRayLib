@@ -72,11 +72,6 @@ void EntityTemplate::EntityHit()
 {
 }
 
-float EntityTemplate::GetEntityRadius()
-{
-	return entityRadius;
-}
-
 void EntityTemplate::SetEntityRadius()
 {
 	

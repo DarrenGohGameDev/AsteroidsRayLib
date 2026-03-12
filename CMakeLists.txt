@@ -10,7 +10,6 @@ add_executable(MyGame
     src/Source/Asteroid.cpp
     src/Source/AsteroidsManager.cpp
     src/Source/EntityTemplate.cpp
-    src/Source/InputManager.cpp
     src/Source/Movable.cpp
     src/Source/PlayerLazerProjectile.cpp
     src/Source/PlayerLazerProjectileManager.cpp
