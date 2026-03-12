@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.21)
-project(MyGame)
+project(Asteroid)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(MyGame
+add_executable(Asteroid WIN32
     src/Source/Main.cpp
     src/Source/Player.cpp
     src/Source/Asteroid.cpp
@@ -25,13 +25,13 @@ add_executable(MyGame
 add_custom_target(copy_assets ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_SOURCE_DIR}/Assets
-            $<TARGET_FILE_DIR:MyGame>/Assets
+            $<TARGET_FILE_DIR:Asteroid>/Assets
 )
 
-add_dependencies(MyGame copy_assets)
+add_dependencies(Asteroid copy_assets)
 
-target_include_directories(MyGame PRIVATE src/Header)
+target_include_directories(Asteroid PRIVATE src/Header)
 
 find_package(raylib CONFIG REQUIRED)
 
-target_link_libraries(MyGame PRIVATE raylib)
+target_link_libraries(Asteroid PRIVATE raylib)
