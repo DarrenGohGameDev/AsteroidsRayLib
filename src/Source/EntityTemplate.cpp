@@ -12,11 +12,6 @@ EntityTemplate::EntityTemplate()
 	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&EntityTemplate::ResetEntity>(this);
 }
 
-ENTITYSTATE EntityTemplate::GetCurrentEntityState()
-{
-	return currentEntityState;
-}
-
 void EntityTemplate::EntityUpdate(float deltaTime)
 {
 	if (GetCurrentEntityState() == DISABLE)
@@ -26,6 +21,7 @@ void EntityTemplate::EntityUpdate(float deltaTime)
 		return;
 
 	float gameSpeed = GameManager::Get().GetCurrentGameSpeed();
+
 	float dt = deltaTime * gameSpeed;
 
 	switch (currentEntityState)
@@ -99,12 +95,11 @@ bool EntityTemplate::CheckEntityCollision(EntityTemplate* entity)
 	{
 		EntityHit();
 	}
-
 	
 	return hit;
 }
 
-#pragma region STATES Enter / Update / Exit function
+#pragma region STATES Enter / Update / Exit and state related function
 
 	void EntityTemplate::EntityActiveStateEnter()
 	{
@@ -222,21 +217,21 @@ void EntityTemplate::ChangeEntityState(ENTITYSTATE state)
 
 	switch (state)
 	{
-	case ACTIVE:
-		EntityActiveStateEnter();
-		break;
-	case INVULNERABLE:
-		EntityInvulnerableStateEnter();
-		break;
-	case PAUSE:
-		EntityPauseStateEnter();
-		break;
-	case DISABLE:
-		EntityDisableStateEnter();
-		break;
+		case ACTIVE:
+			EntityActiveStateEnter();
+			break;
+		case INVULNERABLE:
+			EntityInvulnerableStateEnter();
+			break;
+		case PAUSE:
+			EntityPauseStateEnter();
+			break;
+		case DISABLE:
+			EntityDisableStateEnter();
+			break;
 	}
+
 	currentEntityState = state;
+
 	isChangingState = false;
 }
-
-

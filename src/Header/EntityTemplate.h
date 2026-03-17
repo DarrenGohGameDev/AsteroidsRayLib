@@ -16,7 +16,7 @@ class EntityTemplate
 
 		EntityTemplate();
 
-		ENTITYSTATE GetCurrentEntityState();
+		const ENTITYSTATE& GetCurrentEntityState() { return currentEntityState; }
 
 		void EntityUpdate(float deltaTime);
 
@@ -67,7 +67,7 @@ class EntityTemplate
 
 		virtual void SetEntityRadius();
 
-#pragma region STATES Enter / Update / Exit function
+#pragma region STATES Enter / Update / Exit and state related function
 
 		virtual void EntityActiveStateEnter();
 		virtual void EntityInvulnerableStateEnter();
