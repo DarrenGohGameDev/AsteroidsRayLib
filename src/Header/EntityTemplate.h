@@ -16,6 +16,8 @@ class EntityTemplate
 
 		EntityTemplate();
 
+		virtual ~EntityTemplate() = default;
+
 		const ENTITYSTATE& GetCurrentEntityState() { return currentEntityState; }
 
 		void EntityUpdate(float deltaTime);
