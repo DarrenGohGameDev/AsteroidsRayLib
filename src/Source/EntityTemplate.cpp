@@ -14,6 +14,9 @@ EntityTemplate::EntityTemplate()
 
 EntityTemplate::~EntityTemplate()
 {
+	GameManager::Get().GetDispatcher().sink<OnGameStateChange>().disconnect(this);
+
+	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().disconnect(this);
 }
 
 void EntityTemplate::EntityUpdate(float deltaTime)

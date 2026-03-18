@@ -16,7 +16,7 @@ class EntityTemplate
 
 		EntityTemplate();
 
-		virtual ~EntityTemplate() = default;
+		virtual ~EntityTemplate();
 
 		const ENTITYSTATE& GetCurrentEntityState() { return currentEntityState; }
 
