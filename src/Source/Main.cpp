@@ -80,16 +80,16 @@ void UpdateDrawFrame(void)
 
 		for (int a = 0; a < asteroidManager.asteroids.size(); a++)
 		{
-			if (asteroidManager.asteroids[a].GetCurrentEntityState() == DISABLE)
+			if (asteroidManager.asteroids[a]->GetCurrentEntityState() == DISABLE)
 				continue;
 
-			if (player.projectileManager._projectile[p]->CheckEntityCollision(&asteroidManager.asteroids[a]))
+			if (player.projectileManager._projectile[p]->CheckEntityCollision(asteroidManager.asteroids[a].get()))
 			{
 				ScoreManager::Get().UpdateScore(1);
 
 				PlaySound(SoundManager::Get().AsteroidHit);
 
-				AsteroidSize hitResult = asteroidManager.asteroids[a].AsteroidHit();
+				AsteroidSize hitResult = asteroidManager.asteroids[a]->AsteroidHit();
 
 				if (hitResult != ASTEROIDS_SMALL)
 				{
@@ -99,7 +99,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 2; i++)
 						{
-							asteroidManager.SpawnAsteroid(asteroidManager.asteroids[a].GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteroid(asteroidManager.asteroids[a]->GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
 						}
 
 						break;
@@ -108,7 +108,7 @@ void UpdateDrawFrame(void)
 
 						for (int i = 0; i < 3; i++)
 						{
-							asteroidManager.SpawnAsteroid(asteroidManager.asteroids[a].GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
+							asteroidManager.SpawnAsteroid(asteroidManager.asteroids[a]->GetEntityPosition(), GameManager::Get().screenCenter, true, hitResult);
 						}
 
 						break;
@@ -124,10 +124,10 @@ void UpdateDrawFrame(void)
 	{
 		for (int a = 0; a < asteroidManager.asteroids.size(); a++)
 		{
-			if (asteroidManager.asteroids[a].GetCurrentEntityState() == DISABLE)
+			if (asteroidManager.asteroids[a]->GetCurrentEntityState() == DISABLE)
 				continue;
 
-			if (player.CheckEntityCollision(&asteroidManager.asteroids[a]))
+			if (player.CheckEntityCollision(asteroidManager.asteroids[a].get()))
 			{
 				PlaySound(SoundManager::Get().playerHit);
 				break;

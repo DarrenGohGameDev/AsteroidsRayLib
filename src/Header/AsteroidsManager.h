@@ -17,7 +17,7 @@ class AsteroidsManager
 
 		void SpawnAsteroid(Vector2 screenSize ,Vector2 screenCenter ,bool asteroidHitSpawn = false ,AsteroidSize asteroidSize = ASTEROIDS_SMALL);
 
-		std::vector<Asteroid>  asteroids;
+		std::vector<std::unique_ptr<Asteroid>> asteroids;
 
 #pragma region DEBUGING
 
@@ -71,7 +71,7 @@ class AsteroidsManager
 
 #pragma endregion
 
-		void CreateAsteroid(Asteroid* inactiveAsteroid ,Vector2 screenSize ,Vector2 screenCenter ,bool asteroidHitSpawn ,AsteroidSize asteroidSize);
+		void CreateAsteroid(Asteroid& inactiveAsteroid ,Vector2 screenSize ,Vector2 screenCenter ,bool asteroidHitSpawn ,AsteroidSize asteroidSize);
 
 		Vector2 GetAsteroidSpawnPosition(Vector2 screenSize ,bool asteroidHitSpawn);
 
