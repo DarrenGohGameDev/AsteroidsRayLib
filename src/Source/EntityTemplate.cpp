@@ -12,10 +12,6 @@ EntityTemplate::EntityTemplate()
 	GameManager::Get().GetDispatcher().sink<GameRestartRequest>().connect<&EntityTemplate::ResetEntity>(this);
 }
 
-EntityTemplate::~EntityTemplate()
-{
-}
-
 void EntityTemplate::EntityUpdate(float deltaTime)
 {
 	if (GetCurrentEntityState() == DISABLE)

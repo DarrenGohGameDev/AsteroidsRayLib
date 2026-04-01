@@ -4,7 +4,10 @@
 
 PlayerLazerProjectileManager::PlayerLazerProjectileManager()
 {
-	_projectile.resize(initialProjectilesSpawnAmount);
+	for (int i = 0; i < initialProjectilesSpawnAmount; i++)
+	{
+		_projectile.push_back(std::make_unique<PlayerLazerProjectile>());
+	}
 }
 
 void PlayerLazerProjectileManager::UpdateAllProjectile(float deltaTIme)
@@ -13,11 +16,11 @@ void PlayerLazerProjectileManager::UpdateAllProjectile(float deltaTIme)
 
 	for (int i = 0; i < _projectile.size(); i++)
 	{
-		_projectile[i].EntityUpdate(deltaTIme);
+		_projectile[i]->EntityUpdate(deltaTIme);
 
 		if (debugMode || GameManager::Get().InDebugMode())
 		{
-			if (_projectile[i].GetCurrentEntityState() == ACTIVE)
+			if (_projectile[i]->GetCurrentEntityState() == ACTIVE)
 			{
 				totalActiveProjectile++;
 			}
@@ -37,9 +40,9 @@ void PlayerLazerProjectileManager::SpawnProjectile(Vector2 spawnPosition ,float 
 
 	for (int i = 0; i < _projectile.size(); i++)
 	{
-		if (_projectile[i].GetCurrentEntityState() != ACTIVE)
+		if (_projectile[i]->GetCurrentEntityState() != ACTIVE)
 		{
-			CreateProjectile(&_projectile[i],spawnPosition, spawnRotation, creeatedTime);
+			CreateProjectile(*_projectile[i],spawnPosition, spawnRotation, creeatedTime);
 
 			spawnNewProjectile = true;
 			return;
@@ -48,8 +51,8 @@ void PlayerLazerProjectileManager::SpawnProjectile(Vector2 spawnPosition ,float 
 
 	if (!spawnNewProjectile)
 	{
-		_projectile.emplace_back();
-		CreateProjectile(&_projectile.back(), spawnPosition, spawnRotation, creeatedTime);
+		_projectile.push_back(std::make_unique<PlayerLazerProjectile>());
+		CreateProjectile(*_projectile.back(), spawnPosition, spawnRotation, creeatedTime);
 	}
 }
 
@@ -57,11 +60,11 @@ void PlayerLazerProjectileManager::DrawAllProjectile()
 {
 	for (int i = 0; i < _projectile.size(); i++)
 	{
-		_projectile[i].DrawEntity();
+		_projectile[i]->DrawEntity();
 	}
 }
 
-void PlayerLazerProjectileManager::CreateProjectile(PlayerLazerProjectile* inactiveProjectile ,Vector2 spawnPosition ,float spawnRotation ,float creeatedTime)
+void PlayerLazerProjectileManager::CreateProjectile(PlayerLazerProjectile& inactiveProjectile ,Vector2 spawnPosition ,float spawnRotation ,float creeatedTime)
 {
 	float radians = spawnRotation * DEG2RAD;
 
@@ -75,5 +78,5 @@ void PlayerLazerProjectileManager::CreateProjectile(PlayerLazerProjectile* inact
 		Vector2Scale(forward, 24.0f)
 	);
 
-	inactiveProjectile->Init(spawnPos, spawnRotation, creeatedTime);
+	inactiveProjectile.Init(spawnPos, spawnRotation, creeatedTime);
 }

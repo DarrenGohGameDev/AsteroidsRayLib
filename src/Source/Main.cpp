@@ -73,17 +73,17 @@ void UpdateDrawFrame(void)
 
 	for (int p = 0; p < player.projectileManager._projectile.size(); p++)
 	{
-		if (player.projectileManager._projectile[p].GetCurrentEntityState() == DISABLE)
+		if (player.projectileManager._projectile[p]->GetCurrentEntityState() == DISABLE)
 			continue;
 
-		UIManager::Get().shootMeBtn.CheckEntityCollision(&player.projectileManager._projectile[p]);
+		UIManager::Get().shootMeBtn.CheckEntityCollision(player.projectileManager._projectile[p].get());
 
 		for (int a = 0; a < asteroidManager.asteroids.size(); a++)
 		{
 			if (asteroidManager.asteroids[a].GetCurrentEntityState() == DISABLE)
 				continue;
 
-			if (player.projectileManager._projectile[p].CheckEntityCollision(&asteroidManager.asteroids[a]))
+			if (player.projectileManager._projectile[p]->CheckEntityCollision(&asteroidManager.asteroids[a]))
 			{
 				ScoreManager::Get().UpdateScore(1);
 

@@ -11,7 +11,7 @@ class PlayerLazerProjectileManager
 
 		PlayerLazerProjectileManager();
 
-		std::vector<PlayerLazerProjectile>  _projectile;
+		std::vector<std::unique_ptr<PlayerLazerProjectile>>  _projectile;
 
 		void UpdateAllProjectile(float deltaTIme);
 
@@ -23,6 +23,6 @@ class PlayerLazerProjectileManager
 
 		const bool debugMode = false;
 
-		void CreateProjectile(PlayerLazerProjectile* inactiveProjectile ,Vector2 spawnPosition ,float spawnRotation ,float creeatedTime);
+		void CreateProjectile(PlayerLazerProjectile& inactiveProjectile ,Vector2 spawnPosition ,float spawnRotation ,float creeatedTime);
 };
 
