@@ -18,7 +18,7 @@ public :
 
 private:
 
-	Player* playerStat;
+	Player* playerStat = nullptr;
 
 	float sfxSliderValue = 1.0f;
 
